@@ -1,0 +1,75 @@
+[
+  {
+    "title": "E-commerce product page",
+    "description": "",
+
+    "links": {
+      "code": "https://github.com/RudVlad473/e-commerce-product-page",
+      "deployment": "https://e-commerce-product-page-pink.vercel.app/"
+    },
+    "demo": {
+      "url": "",
+      "type": "V"
+    }
+  },
+  {
+    "title": "Recipe-management app",
+    "description": "",
+    "links": {
+      "code": "https://github.com/RudVlad473/recipe-management-app",
+      "deployment": "https://recipe-management-app-six.vercel.app/"
+    },
+    "demo": {
+      "url": "",
+      "type": "H"
+    }
+  },
+  {
+    "title": "Github issue kanban-board",
+    "description": "",
+    "links": {
+      "code": "",
+      "deployment": ""
+    },
+    "demo": {
+      "url": "",
+      "type": "H"
+    }
+  },
+  {
+    "title": "Interactive comment section",
+    "description": "",
+    "links": {
+      "code": "https://github.com/RudVlad473/interactive-comment-section-project",
+      "deployment": "https://interactive-comment-section-project.vercel.app/"
+    },
+    "demo": {
+      "url": "",
+      "type": "V"
+    }
+  },
+  {
+    "title": "Notification page",
+    "description": "",
+    "links": {
+      "code": "https://github.com/RudVlad473/notification-page",
+      "deployment": "https://notification-page-omega.vercel.app/"
+    },
+    "demo": {
+      "url": "",
+      "type": "V"
+    }
+  },
+  {
+    "title": "Multi-step form",
+    "description": "",
+    "links": {
+      "code": "https://github.com/RudVlad473/multi-step-form-vite-project",
+      "deployment": "https://multi-step-form-vite-project.vercel.app/"
+    },
+    "demo": {
+      "url": "",
+      "type": "H"
+    }
+  }
+]

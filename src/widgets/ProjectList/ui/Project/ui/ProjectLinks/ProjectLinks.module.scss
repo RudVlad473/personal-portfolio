@@ -1,0 +1,15 @@
+$link-width: 50px;
+
+.link-group {
+  display: flex;
+  gap: 0.5em;
+}
+
+.link {
+  border-radius: 50%;
+
+  max-width: $link-width;
+  min-width: $link-width;
+
+  border: 1px solid black;
+}

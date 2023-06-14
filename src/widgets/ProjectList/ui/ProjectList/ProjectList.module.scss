@@ -1,0 +1,10 @@
+@use "../../../../shared/lib/stylesheets/components/" as *;
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: $ui-step;
+}
+
+.project {
+}

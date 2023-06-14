@@ -1,0 +1,26 @@
+.project {
+  display: grid;
+  grid-template-areas:
+    "heading   links     demo"
+    "separator separator demo"
+    "descr     descr     demo";
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.description {
+  grid-area: descr;
+}
+
+.demo {
+  grid-area: demo;
+}
+
+.separator {
+  grid-area: separator;
+}
+
+.links {
+}
