@@ -1,0 +1,6 @@
+@use "../../../../shared/lib/stylesheets" as *;
+
+.typing {
+  font-family: $codeFontFamily;
+  font-size: $ui-font-step * 2;
+}
