@@ -1,0 +1,19 @@
+.home-layout {
+  display: grid;
+  grid-template-areas:
+    "heading"
+    "contents"
+    "footing";
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.contents {
+  grid-area: contents;
+}
+
+.footing {
+  grid-area: footing;
+}
