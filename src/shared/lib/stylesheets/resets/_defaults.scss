@@ -1,0 +1,16 @@
+@use "../abstracts/" as *;
+@use '../components/' as c;
+
+html {
+  font-family: $mainFontFamily, "Calibri";
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $textColor;
+  background-color: $backgroundColor;
+  font-weight: $normal;
+  font-size: c.$ui-font-step;
+
+  // padding: 1em;
+}
