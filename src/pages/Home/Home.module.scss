@@ -1,0 +1,8 @@
+@use "../../shared/lib/stylesheets/components/" as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+
+  gap: $ui-step * 2;
+}
