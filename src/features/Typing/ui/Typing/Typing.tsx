@@ -1,27 +1,28 @@
 import styles from "./Typing.module.scss"
-import { FC, useEffect } from "react"
+import { FC, useEffect, useRef } from "react"
 import Typed from "typed.js"
 
 export const Typing: FC = () => {
-  const articleId = "ARTICLE_WITH_TYPING"
+  const articleRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const typed = new Typed(articleId, {
+    const typed = new Typed(articleRef.current, {
       strings: [
-        "Hi, i'm <i>Vladimir</i>",
-        "A motivated <i>frontend engineer</i> from <i>Kharkiv, Ukraine<i/>",
+        "Hi, i'm <b>Vladimir</b>^1000",
+        "A motivated <b>frontend engineer</b> from <b>Kharkiv, Ukraine<b/>",
       ],
-      typeSpeed: 50,
+      typeSpeed: 100,
       showCursor: true,
       backDelay: 50,
+      smartBackspace: false,
     })
 
     return () => typed.destroy()
-  }, [articleId])
+  }, [articleRef])
 
   return (
     <article className={styles.typing}>
-      <span id={articleId} />
+      <span ref={articleRef} />
     </article>
   )
 }
