@@ -1,2 +1,5 @@
-.arrowicon {
+@use '../../../../shared/lib/stylesheets/abstracts/' as *;
+
+.arrow {
+  fill: $accentColor;
 }
