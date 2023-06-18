@@ -1,6 +1,9 @@
 .snake-scale {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
+}
 
-  border: 2px solid white;
+.scale {
+}
+
+.empty-scale {
 }
