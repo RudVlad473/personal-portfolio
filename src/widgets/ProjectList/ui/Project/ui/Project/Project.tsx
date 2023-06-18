@@ -1,5 +1,5 @@
 import { Link } from "../../../../../../shared/ui/Link"
-import { CodeIcon } from "../../../../CodeIcon"
+import { CodeIcon } from "../../../CodeIcon"
 import { TProject } from "../../../../lib/types"
 import { Demo } from "../Demo"
 import { ProjectLinks } from "../ProjectLinks"

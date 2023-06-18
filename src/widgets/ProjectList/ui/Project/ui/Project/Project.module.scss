@@ -4,6 +4,9 @@
     "heading   links     demo"
     "separator separator demo"
     "descr     descr     demo";
+
+  justify-content: start;
+
 }
 
 .heading {
@@ -20,6 +23,8 @@
 
 .separator {
   grid-area: separator;
+
+  
 }
 
 .links {

@@ -14,6 +14,7 @@ export type TProject = {
     url: string
     type: TDemo
   }
+  technologies: string[]
 }
 
 export type TProjects = TProject[]

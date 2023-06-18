@@ -6,10 +6,15 @@ $link-width: 50px;
 }
 
 .link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50%;
 
   max-width: $link-width;
   min-width: $link-width;
 
-  border: 1px solid black;
+  aspect-ratio: 1;
+
 }
