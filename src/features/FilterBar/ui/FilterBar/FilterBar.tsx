@@ -1,3 +1,4 @@
+import { useProjectFiltersContext } from "../../../../shared/lib/hooks"
 import { TFilterTags } from "../../lib/types"
 import { FilterTag } from "../FilterTag"
 import styles from "./FilterBar.module.scss"
@@ -9,6 +10,10 @@ type FilterBarProps = {
 }
 
 export const FilterBar: FC<FilterBarProps> = ({ tags, onChange }) => {
+  const filterContext = useProjectFiltersContext()
+
+  const setFilters = filterContext?.setFilters
+
   return (
     <div className={styles["filter-bar"]}>
       <ul className={styles.tags}>
@@ -16,15 +21,24 @@ export const FilterBar: FC<FilterBarProps> = ({ tags, onChange }) => {
           <li key={value}>
             <FilterTag
               value={value}
-              onDelete={({ value }) => {
-                console.log("on delete tag")
-              }}
+              onDelete={({ value }) =>
+                setFilters?.((filters) => ({
+                  ...filters,
+                  technologies: [...(filters?.technologies || [])].filter(
+                    (technology) => technology !== value
+                  ),
+                }))
+              }
             />
           </li>
         ))}
       </ul>
 
-      <button className={styles["clear-btn"]}>Clear tags</button>
+      <button
+        className={styles["clear-btn"]}
+        onClick={() => setFilters?.(undefined)}>
+        Clear tags
+      </button>
     </div>
   )
 }

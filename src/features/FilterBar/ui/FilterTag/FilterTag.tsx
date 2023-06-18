@@ -11,7 +11,7 @@ export const FilterTag: FC<FilterTagProps> = ({ value, onDelete }) => {
   return (
     <div className={styles.tag}>
       <span className={styles.value}>{value}</span>
-      
+
       <span
         className={styles.cross}
         onClick={() => onDelete({ value })}>
