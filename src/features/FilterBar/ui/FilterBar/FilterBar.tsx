@@ -9,7 +9,7 @@ type FilterBarProps = {
   onChange: (payload: string[]) => void
 }
 
-export const FilterBar: FC<FilterBarProps> = ({ tags, onChange }) => {
+export const FilterBar: FC<FilterBarProps> = ({ tags,  }) => {
   const filterContext = useProjectFiltersContext()
 
   const setFilters = filterContext?.setFilters
@@ -36,7 +36,7 @@ export const FilterBar: FC<FilterBarProps> = ({ tags, onChange }) => {
 
       <button
         className={styles["clear-btn"]}
-        onClick={() => setFilters?.(undefined)}>
+        onClick={() => setFilters?.({})}>
         Clear tags
       </button>
     </div>

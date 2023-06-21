@@ -1,4 +1,3 @@
-import styles from "./CrossIcon.module.scss"
 import { FC } from "react"
 
 export const CrossIcon: FC = () => {
