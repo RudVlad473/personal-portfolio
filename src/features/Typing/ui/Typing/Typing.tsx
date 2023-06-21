@@ -6,10 +6,9 @@ export const Typing: FC = () => {
   const articleRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const typed = new Typed(articleRef.current, {
+    const typed = new Typed(articleRef.current , {
       strings: [
-        "Hi, i'm <b>Vladimir</b>^1000",
-        "A motivated <b>frontend engineer</b> from <b>Kharkiv, Ukraine<b/>",
+        "Hi, i'm <b>Vladimir</b>^1000 <br/>A motivated <b>frontend engineer</b> from <b>Kharkiv, Ukraine<b/>",
       ],
       typeSpeed: 100,
       showCursor: true,
