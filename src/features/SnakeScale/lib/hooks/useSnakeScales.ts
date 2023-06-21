@@ -19,7 +19,7 @@ export function useSnakeScales(scales: TScales) {
   const rowCount = pivot - 1
 
   const matrixColCount = rowCount
-  const maxrixRowCount = rowCount
+  //const maxrixRowCount = rowCount
 
   const scalesMatrix: TScales[] = iterativelySplitArrayByGroups(scales, [
     colCount - rowCount,
