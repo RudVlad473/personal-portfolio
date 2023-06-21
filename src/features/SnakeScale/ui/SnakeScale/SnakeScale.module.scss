@@ -1,8 +1,15 @@
+@use "../../lib/stylesheets/scale.module.scss" as s;
+
 .snake-scale {
   display: grid;
 }
 
 .scale {
+  transition: scale 0.5s ease-in-out;
+
+  &--selected {
+    scale: 100 + s.$corner-cut + 2;
+  }
 }
 
 .empty-scale {

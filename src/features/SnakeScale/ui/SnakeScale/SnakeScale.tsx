@@ -1,16 +1,18 @@
-import { FC } from "react"
+import classNames from "classnames"
+import { FC, Fragment } from "react"
 import { useSnakeScales } from "../../lib/hooks"
-import { TScale, TScales } from "../../lib/types"
+import { TScale } from "../../lib/types"
 import { Scale } from "../Scale"
 import styles from "./SnakeScale.module.scss"
 
 type SnakeScaleProps = {
-  scales: TScales
+  scales: TScale[]
   onScaleClick: (scale: TScale) => void
+  selectedScales: TScale['title'][]
 }
 
 //"Snake scale" is a hexagon-like group of shapes
-export const SnakeScale: FC<SnakeScaleProps> = ({ scales, onScaleClick }) => {
+export const SnakeScale: FC<SnakeScaleProps> = ({ scales, onScaleClick, selectedScales }) => {
   const { colCount, rowCount, scalesMatrix, calculateScaleTranslation } = useSnakeScales(scales)
 
   return (
@@ -24,18 +26,20 @@ export const SnakeScale: FC<SnakeScaleProps> = ({ scales, onScaleClick }) => {
         const translation = calculateScaleTranslation(scale)
 
         return (
-          <>
+          <Fragment key={scale.id}>
             <li className={styles["empty-scale"]} />
 
             <li
               key={scale.title}
-              className={styles["scale"]}
+              className={classNames(styles["scale"], {
+                [styles["scale--selected"]]: selectedScales.includes(scale.title),
+              })}
               style={{ translate: `${translation}%` }}
               onClick={() => onScaleClick(scale)}>
               <Scale {...scale} />
             </li>
             {index === scales.length - 1 && <li className={styles["empty-scale"]} />}
-          </>
+          </Fragment>
         )
       })}
     </ul>
