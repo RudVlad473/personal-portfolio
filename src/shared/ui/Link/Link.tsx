@@ -9,7 +9,13 @@ type LinkProps = PropsWithChildren<{
   onClick?: () => void
 }>
 
-export const Link: FC<LinkProps> = ({ children, url = "", toNewPage = true, isPlain = false }) => {
+export const Link: FC<LinkProps> = ({
+  children,
+  url = "",
+  toNewPage = true,
+  isPlain = false,
+  onClick,
+}) => {
   return (
     <a
       className={classNames(styles.link, {
@@ -17,7 +23,15 @@ export const Link: FC<LinkProps> = ({ children, url = "", toNewPage = true, isPl
       })}
       href={url}
       target={toNewPage ? "_blank" : "_self"}
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+      onClick={(e) => {
+        if (!onClick) {
+          return
+        }
+
+        e.preventDefault()
+        onClick?.()
+      }}>
       {children}
     </a>
   )

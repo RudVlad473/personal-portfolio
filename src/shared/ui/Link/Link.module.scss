@@ -1,6 +1,31 @@
+@use "../../lib/stylesheets/abstracts/" as *;
+@use "../../lib/stylesheets/mixins/transitions" as *;
+
 .link {
+  position: relative;
+
+  white-space: nowrap;
 
   &--animated {
-    
+    &::before {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: 0.25em;
+      z-index: -1;
+
+      background-color: $accentColor;
+
+      width: 100%;
+      height: 0.25em;
+
+      @include transition-200;
+    }
+
+    &:hover::before {
+      bottom: 0;
+      height: 100%;
+    }
   }
 }
