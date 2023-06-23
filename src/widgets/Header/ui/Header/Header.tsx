@@ -1,20 +1,37 @@
+import { useScrollTo } from "../../../../shared/lib/hooks"
 import { Link } from "../../../../shared/ui/Link"
+import { calculatePagePercentage } from "../../lib/utils"
 import { ArrowIcon } from "../ArrowIcon"
 import styles from "./Header.module.scss"
 import { FC } from "react"
 
 export const Header: FC = () => {
-  function handleScrollToBottom() {
-    window.scrollTo(0, document.body.scrollHeight)
+  const { scrollToBottom, scrollToTop } = useScrollTo()
+
+  function handleOnArrowClick() {
+    const scrollPercentage = calculatePagePercentage()
+
+    const isOnTop = scrollPercentage < 50
+
+    isOnTop ? scrollToBottom() : scrollToTop()
   }
 
   return (
     <nav className={styles.header}>
       <span>
-        <ArrowIcon />
+        <Link
+          onClick={handleOnArrowClick}
+          toNewPage={false}
+          isPlain>
+          <ArrowIcon />
+        </Link>
       </span>
-      <span>
-        <Link onClick={handleScrollToBottom}>Contacts</Link>
+      <span className={styles.contacts}>
+        <Link
+          onClick={scrollToBottom}
+          toNewPage={false}>
+          Contacts
+        </Link>
       </span>
     </nav>
   )

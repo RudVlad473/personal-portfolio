@@ -1,5 +1,9 @@
-@use '../../../../shared/lib/stylesheets/abstracts/' as *;
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
 
 .arrow {
   fill: $accentColor;
+
+  scale: 2;
+
+  will-change: transform;
 }

@@ -1,6 +1,13 @@
+@use '../../../../shared/lib/stylesheets/abstracts/' as *;
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
 }
 
+.contacts {
+  font-size: $fs-200;
+}
