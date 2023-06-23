@@ -1,0 +1,11 @@
+@mixin z-index-default {
+  z-index: 100;
+}
+
+@mixin z-index-overlay {
+  z-index: 200;
+}
+
+@mixin z-index-modal {
+  z-index: 300;
+}
