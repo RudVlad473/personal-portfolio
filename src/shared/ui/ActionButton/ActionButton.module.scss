@@ -1,0 +1,22 @@
+@use "../../lib/stylesheets/abstracts/" as *;
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $buttonColor;
+
+  aspect-ratio: 1;
+
+  padding: 0.25em;
+
+  border-radius: 50%;
+
+  width: 50px;
+
+  color: $textColor;
+
+  outline: none;
+  border: none;
+}
