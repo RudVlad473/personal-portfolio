@@ -1,47 +1,52 @@
 import { FilterBar } from "../../../../features/FilterBar/ui"
+import { TScale } from "../../../../features/SnakeScale/lib/types"
 import { SnakeScale } from "../../../../features/SnakeScale/ui"
-import { useProjectFiltersContext } from "../../../../shared/lib/hooks"
-import { SKILL_SCALES } from "../../consts"
+import { useScrollTo } from "../../../../shared/lib/hooks"
+import { useSortedScales } from "../../lib/hooks"
 import styles from "./SkillScales.module.scss"
-import { FC } from "react"
+import { FC, useCallback, useEffect, useRef } from "react"
 
 export const SkillScales: FC = () => {
-  const filtersContext = useProjectFiltersContext()
+  const { sortedSkills, technologiesFilter = [], setFilters } = useSortedScales()
 
-  const technologies = filtersContext?.filters?.technologies
-  const setFilters = filtersContext?.setFilters
+  const filterbarRef = useRef<HTMLDivElement>(null)
 
-  function handleOnFilterChange(payload: string[]) {
-    console.log(`on filter change ${payload}`)
-  }
+  const handleOnScaleSelect = useCallback(
+    (scale: TScale) => {
+      setFilters?.(({ technologies, ...filters }) => {
+        const isAlreadySelected = !!technologies?.includes(scale.title)
+
+        let newTechnologies: string[] = technologies || []
+
+        if (isAlreadySelected) {
+          //remove selected scale
+          newTechnologies = newTechnologies.filter((technology) => technology !== scale.title)
+        } else {
+          //add new scale
+          newTechnologies = Array.from(new Set([...newTechnologies, scale.title]))
+        }
+
+        return {
+          ...filters,
+          technologies: newTechnologies,
+        }
+      })
+    },
+    [setFilters]
+  )
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles["skill-scales"]}>
         <SnakeScale
-          scales={SKILL_SCALES}
-          onScaleClick={(scale) => {
-            const newTechnologies = Array.from(new Set([...(technologies || []), scale.title]))
-
-            setFilters?.((filters) => {
-              return {
-                ...filters,
-                technologies: newTechnologies,
-              }
-            })
-          }}
+          selectedScales={technologiesFilter}
+          scales={sortedSkills}
+          onScaleClick={handleOnScaleSelect}
         />
       </div>
 
-      <footer>
-        <FilterBar
-          onChange={handleOnFilterChange}
-          tags={
-            technologies?.map((technology) => ({
-              value: technology,
-            })) || []
-          }
-        />
+      <footer ref={filterbarRef}>
+        <FilterBar />
       </footer>
     </div>
   )

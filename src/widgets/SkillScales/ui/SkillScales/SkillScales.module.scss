@@ -1,3 +1,14 @@
+@use "../../../../shared/lib/stylesheets/components/" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $ui-font-step * 4;
+}
+
 .skill-scales {
-  max-width: 500px;
+  min-width: 300px;
+  width: 800px;
+
+  margin-inline: auto;
 }
