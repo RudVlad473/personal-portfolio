@@ -1,2 +1,22 @@
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/components/" as *;
+
 .footer {
+  display: flex;
+
+  padding-block: $body-padding-block;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: $ui-step * 6;
+
+  margin-left: auto;
+}
+
+.name {
+  font-size: $fs-400;
 }

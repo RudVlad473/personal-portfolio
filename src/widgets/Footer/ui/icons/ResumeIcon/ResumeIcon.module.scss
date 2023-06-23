@@ -1,0 +1,6 @@
+@use "../../../../../shared/lib/stylesheets/components/" as *;
+
+
+.resumeicon {
+  @extend .icon-color;
+}

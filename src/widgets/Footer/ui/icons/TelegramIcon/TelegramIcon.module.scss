@@ -1,0 +1,6 @@
+@use "../../../../../shared/lib/stylesheets/components/" as *;
+
+
+.telegramicon {
+  @extend .icon-color;
+}

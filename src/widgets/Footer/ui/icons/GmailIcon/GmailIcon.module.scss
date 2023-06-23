@@ -1,0 +1,5 @@
+@use "../../../../../shared/lib/stylesheets/components/" as *;
+
+.gmailicon {
+  @extend .icon-color;
+}

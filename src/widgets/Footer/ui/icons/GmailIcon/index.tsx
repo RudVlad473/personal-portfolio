@@ -1,0 +1,1 @@
+export { GmailIcon } from "./GmailIcon"

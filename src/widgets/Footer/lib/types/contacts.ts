@@ -1,5 +1,5 @@
 export type TContact = {
-  provider: string
+  logo: React.ReactNode
   link: string
 }
 

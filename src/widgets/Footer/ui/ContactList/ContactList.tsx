@@ -1,19 +1,21 @@
-import { Tag } from "../../../../features/Tag/ui"
-import contacts from "../../lib/data/contacts.json"
+import { Link } from "../../../../shared/ui/Link"
+import { CONTACTS } from "../../lib/consts/contacts"
 import styles from "./ContactList.module.scss"
 import { FC } from "react"
 
 export const ContactList: FC = () => {
   return (
     <ul className={styles["contact-list"]}>
-      {contacts.map(({ link, provider }) => (
+      {CONTACTS.map(({ link, logo }) => (
         <li
-          key={provider}
+          key={link}
           className={styles.contact}>
-          <Tag
-            label={provider}
-            link={link}
-          />
+          <Link
+            url={link}
+            isPlain
+            toNewPage>
+            {logo}
+          </Link>
         </li>
       ))}
     </ul>
