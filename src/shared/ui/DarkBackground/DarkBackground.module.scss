@@ -1,0 +1,33 @@
+@use "../../../shared/lib/stylesheets/mixins/" as *;
+@use "../../../shared/lib/stylesheets/abstracts/" as *;
+
+.darkbackground {
+  @include z-index-overlay;
+  @include transition-300;
+
+  position: fixed; /* Sit on top of the page content */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+
+  cursor: pointer; /* Add a pointer on hover */
+
+  background-color: $overlayColor;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  &--active {
+    // display: block;
+    opacity: 1;
+
+    pointer-events: all;
+
+    // background-color: $overlayColor; /* Black background with opacity */
+  }
+}
