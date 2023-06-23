@@ -1,0 +1,24 @@
+@mixin scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+@mixin scroll-snap-section($vertical-alignment: center) {
+  display: flex;
+  align-items: $vertical-alignment;
+  justify-content: center;
+
+  min-height: 100vh;
+}
+
+@mixin scroll-snap-element($alignment: "center") {
+  @if $alignment == "start" {
+    scroll-snap-align: start;
+  } @else if $alignment == "end" {
+    scroll-snap-align: end;
+  } @else if $alignment == "center" {
+    scroll-snap-align: center;
+  } @else {
+    scroll-snap-align: center;
+  }
+}

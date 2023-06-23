@@ -1,9 +1,13 @@
 @use "../abstracts/" as *;
 @use "../components/" as c;
+@use "../mixins/" as m;
 
 html {
   font-family: $mainFontFamily, "Calibri";
-  scroll-behavior: smooth;
+
+  @include m.scroll-snap-container;
+
+  // scroll-behavior: smooth;
 }
 
 body {
@@ -11,6 +15,8 @@ body {
   background-color: $backgroundColor;
   font-weight: $normal;
   font-size: c.$ui-font-step;
+
+  margin-inline: auto;
 
   // padding: 1em;
 }
