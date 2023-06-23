@@ -1,0 +1,20 @@
+@use "../components/" as *;
+
+@mixin content-width() {
+  max-width: $content-width;
+  margin-inline: auto;
+
+  width: 100%;
+}
+
+@mixin half-content-width() {
+  @include content-width();
+
+  max-width: calc((100vw + $content-width) / 2);
+}
+
+@mixin padded-half-content-width($padding: 0px) {
+  @include half-content-width();
+
+  padding-inline: $padding;
+}

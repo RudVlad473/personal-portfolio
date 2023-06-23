@@ -1,19 +1,43 @@
+@use "../../../shared/lib/stylesheets/mixins/" as *;
+@use "../../../shared/lib/stylesheets/components/" as *;
+
 .home-layout {
   display: grid;
   grid-template-areas:
     "heading"
     "contents"
     "footing";
+
+  position: relative;
 }
 
 .heading {
   grid-area: heading;
+
+  @include half-content-width;
+
+  position: fixed;
+  top: $heading-height;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: $heading-height;
 }
 
 .contents {
   grid-area: contents;
+
+  margin-top: $body-padding-block;
 }
 
 .footing {
   grid-area: footing;
+
+  @include half-content-width;
+
+  @include scroll-snap-element;
 }
