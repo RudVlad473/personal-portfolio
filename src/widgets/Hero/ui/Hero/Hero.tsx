@@ -8,12 +8,12 @@ export const Hero: FC = () => {
   return (
     <>
       <ErrorBoundary fallback={<></>}>
-        <h1>
+        <h1 className={styles.typing}>
           <Typing />
         </h1>
       </ErrorBoundary>
 
-      <div>
+      <div className={styles["skill-scales"]}>
         <SkillScales />
       </div>
     </>
