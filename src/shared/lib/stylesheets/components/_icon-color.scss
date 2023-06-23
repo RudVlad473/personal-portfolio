@@ -1,0 +1,13 @@
+@use "../abstracts/" as *;
+
+$icon-scale: 2;
+
+$icon-size: 24px * $icon-scale;
+
+.icon-color {
+  fill: $textColor;
+
+  scale: $icon-scale;
+
+  font-size: $icon-size;
+}

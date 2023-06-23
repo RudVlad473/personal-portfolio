@@ -1,0 +1,3 @@
+@use './step' as *;
+
+$content-width: $ui-step * 80;
