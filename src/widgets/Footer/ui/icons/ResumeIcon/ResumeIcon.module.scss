@@ -1,6 +1,12 @@
 @use "../../../../../shared/lib/stylesheets/components/" as *;
-
+@use "../../../../../shared/lib/stylesheets/mixins/" as *;
 
 .resumeicon {
   @extend .icon-color;
+
+  @include transition-200;
+
+  &:hover {
+    fill: hsl(109, 100%, 100%);
+  }
 }

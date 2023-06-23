@@ -1,5 +1,12 @@
 @use "../../../../../shared/lib/stylesheets/components/" as *;
+@use "../../../../../shared/lib/stylesheets/mixins/" as *;
 
 .githubicon {
   @extend .icon-color;
+
+  @include transition-200;
+
+  &:hover {
+    fill: #e8eaea;
+  }
 }

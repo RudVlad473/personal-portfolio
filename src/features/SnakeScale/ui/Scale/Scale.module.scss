@@ -1,4 +1,5 @@
 @use "../../lib/stylesheets/scale.module.scss" as s;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .scale {
   position: relative;
@@ -26,7 +27,7 @@
 
   will-change: background-size;
 
-  transition: all 0.15s ease-in-out;
+  @include transition-100;
 
   &:hover {
     cursor: pointer;

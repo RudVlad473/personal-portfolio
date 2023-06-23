@@ -1,9 +1,37 @@
-.tag {
-  display: flex;
-}
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
 
-.value {
-}
+.cube {
+  position: relative;
 
-.cross {
+  transition: transform 0.3s ease;
+
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% -0.6em;
+
+  // perspective:600px;
+  backface-visibility: hidden;
+
+  &,
+  &::after {
+    padding-inline: 0.25em;
+  }
+
+  &::after {
+    content: attr(data-value);
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    transform-origin: 50% 0;
+    transform: rotateX(-90deg);
+
+    background-color: $textColor;
+
+    color: $backgroundColor;
+  }
+
+  &:hover {
+    transform: rotateX(90deg);
+  }
 }

@@ -1,30 +1,53 @@
+@use "../../../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../../../shared/lib/stylesheets/components/" as *;
+@use "../../../../../../shared/lib/stylesheets/mixins/" as *;
+
+.project,
+.contents,
+.article {
+  gap: $ui-step * 5;
+}
+
+.project,
+.contents,
+.heading,
+.article {
+  display: flex;
+}
+
 .project {
-  display: grid;
-  grid-template-areas:
-    "heading   links     demo"
-    "separator separator demo"
-    "descr     descr     demo";
-
-  justify-content: start;
-
+  flex-direction: column;
 }
 
 .heading {
-  grid-area: heading;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: $fs-300;
+  font-weight: $bold;
+}
+
+.contents {
+  & > * {
+    flex: 1;
+  }
+}
+
+.article {
+  flex-direction: column;
 }
 
 .description {
-  grid-area: descr;
+  font-size: $fs-100;
+  text-align: justify;
 }
 
 .demo {
-  grid-area: demo;
-}
+  margin-left: auto;
 
-.separator {
-  grid-area: separator;
-
-  
+  &:empty {
+    display: none;
+  }
 }
 
 .links {

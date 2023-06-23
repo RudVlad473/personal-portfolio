@@ -1,5 +1,12 @@
 @use "../../../../../shared/lib/stylesheets/components/" as *;
+@use "../../../../../shared/lib/stylesheets/mixins/" as *;
 
 .gmailicon {
   @extend .icon-color;
+
+  @include transition-200;
+
+  &:hover {
+    fill: #c71610;
+  }
 }

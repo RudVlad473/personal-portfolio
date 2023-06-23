@@ -1,11 +1,12 @@
 @use "../../lib/stylesheets/scale.module.scss" as s;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .snake-scale {
   display: grid;
 }
 
 .scale {
-  transition: scale 0.5s ease-in-out;
+  @include transition-300;
 
   &--selected {
     scale: 100 + s.$corner-cut + 2;

@@ -1,44 +1,65 @@
+import { Demo } from "../../../../../../features/Demo/ui"
+import { TSeparatorTypes } from "../../../../../../shared/lib/types/separator"
 import { Link } from "../../../../../../shared/ui/Link"
-import { CodeIcon } from "../../../CodeIcon"
+import { Separator } from "../../../../../../shared/ui/Separator"
 import { TProject } from "../../../../lib/types"
-import { Demo } from "../Demo"
+import { CodeIcon } from "../../../CodeIcon"
 import { ProjectLinks } from "../ProjectLinks"
 import styles from "./Project.module.scss"
-import { FC } from "react"
+import { memo } from "react"
 
 type ProjectProps = TProject
 
-export const Project: FC<ProjectProps> = ({ title, description, demo, links }) => {
+export const Project = memo<ProjectProps>(({ title, description, demo, links }) => {
   return (
     <section className={styles.project}>
-      <h1 className={styles.heading}>
-        <Link
-          url={links.deployment}
-          toNewPage>
-          {title}
-        </Link>
-      </h1>
+      <header className={styles.heading}>
+        <h1>
+          <Link
+            url={links.deployment}
+            toNewPage>
+            {title}
+          </Link>
+        </h1>
 
-      <nav className={styles.links}>
-        <ProjectLinks
-          links={[
-            {
-              icon: () => <CodeIcon />,
-              url: links.code,
-            },
-          ]}
-        />
-      </nav>
+        <nav className={styles.links}>
+          <ProjectLinks
+            links={[
+              {
+                icon: () => <CodeIcon />,
+                url: links.code,
+              },
+            ]}
+          />
+        </nav>
+      </header>
 
-      <hr className={styles.separator} />
+      <div className={styles.contents}>
+        {description.length > 0 && (
+          <div className={styles.article}>
+            <div className={styles.separator}>
+              <Separator type={TSeparatorTypes.LINED} />
+            </div>
 
-      <article className={styles.description}>{description}</article>
+            <article className={styles.description}>{description}</article>
+          </div>
+        )}
 
-      {demo && (
-        <aside className={styles.demo}>
-          <Demo {...demo} />
-        </aside>
-      )}
+        {demo && (
+          <aside className={styles.demo}>
+            {links.deployment ? (
+              <Link
+                url={links.deployment}
+                toNewPage
+                isPlain>
+                <Demo {...demo} />
+              </Link>
+            ) : (
+              <Demo {...demo} />
+            )}
+          </aside>
+        )}
+      </div>
     </section>
   )
-}
+})

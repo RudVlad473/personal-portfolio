@@ -3,4 +3,16 @@
 .typing {
   font-family: $codeFontFamily;
   font-size: $fs-400;
+
+  text-align: start;
+
+  &::after {
+    content: "placeholder text";
+
+    display: block;
+
+    opacity: 0;
+
+    user-select: none;
+  }
 }

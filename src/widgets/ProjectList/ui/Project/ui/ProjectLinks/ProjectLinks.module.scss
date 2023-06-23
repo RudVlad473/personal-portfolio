@@ -1,7 +1,10 @@
+@use "../../../../../../shared/lib/stylesheets/abstracts/" as *;
+
 $link-width: 50px;
 
 .link-group {
   display: flex;
+
   gap: 0.5em;
 }
 
@@ -17,4 +20,5 @@ $link-width: 50px;
 
   aspect-ratio: 1;
 
+  background-color: $buttonColor;
 }

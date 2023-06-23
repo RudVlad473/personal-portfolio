@@ -1,8 +1,7 @@
-import { useProjectFiltersContext } from "../../../../shared/lib/hooks"
-import projectsJson from "../../lib/data/projects.json"
+import { TProjectFilters } from "../../../../shared/lib/types"
+import { PROJECTS } from "../data/projects"
 import { TProject, TProjects } from "../types"
-
-const projects = projectsJson as TProjects
+import { useMemo } from "react"
 
 const projectFilters: Partial<
   Record<keyof TProject, (project: TProject, payload: any) => boolean>
@@ -12,37 +11,37 @@ const projectFilters: Partial<
   },
 }
 
-export function useFilteredProjects(): {
+export function useFilteredProjects(filters: TProjectFilters): {
   projects: TProjects
 } {
-  const filtersContext = useProjectFiltersContext()
+  const projects: TProjects = useMemo(() => {
+    let filteredProjects: TProjects = PROJECTS
 
-  const filters = filtersContext?.filters
-
-  let filteredProjects: TProjects = projects
-
-  if (!filters) {
-    return { projects: filteredProjects }
-  }
-
-  const activeFilters = Object.keys(filters)
-
-  for (const filter of activeFilters) {
-    const filterKey = filter as keyof TProject
-
-    const filterCallback = projectFilters[filterKey]
-    const filterPayload = filters[filterKey]
-
-    if (!filterCallback || !filterPayload) {
-      continue
+    if (!filters) {
+      return filteredProjects
     }
 
-    filteredProjects = filteredProjects.filter((project) => {
-      return filterCallback(project, filterPayload)
-    })
-  }
+    const activeFilters = Object.keys(filters)
+
+    for (const filter of activeFilters) {
+      const filterKey = filter as keyof TProject
+
+      const filterCallback = projectFilters[filterKey]
+      const filterPayload = filters[filterKey]
+
+      if (!filterCallback || !filterPayload) {
+        continue
+      }
+
+      filteredProjects = filteredProjects.filter((project) => {
+        return filterCallback(project, filterPayload)
+      })
+    }
+
+    return filteredProjects
+  }, [filters])
 
   return {
-    projects: filteredProjects,
+    projects,
   }
 }

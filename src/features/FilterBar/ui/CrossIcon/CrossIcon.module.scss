@@ -1,2 +1,14 @@
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/mixins/transitions" as *;
+
 .crossicon {
+  fill: $textColor;
+
+  @include transition-300;
+
+  &:hover {
+    rotate: 180deg;
+
+    fill: $accentColor;
+  }
 }

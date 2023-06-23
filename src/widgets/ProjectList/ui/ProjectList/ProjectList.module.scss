@@ -1,10 +1,24 @@
 @use "../../../../shared/lib/stylesheets/components/" as *;
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .project-list {
-  display: flex;
-  flex-direction: column;
-  gap: $ui-step;
+  $list-gap: $ui-step * 15;
+
+  display: grid;
+  gap: $list-gap;
+
+  margin: $list-gap auto;
+}
+
+.project-section {
+  @include scroll-snap-section;
 }
 
 .project {
+  @include scroll-snap-element;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
 }

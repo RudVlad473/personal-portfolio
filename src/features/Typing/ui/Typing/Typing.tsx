@@ -6,13 +6,13 @@ export const Typing: FC = () => {
   const articleRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const typed = new Typed(articleRef.current , {
+    const typed = new Typed(articleRef.current, {
       strings: [
-        "Hi, i'm <b>Vladimir</b>^1000 <br/>A motivated <b>frontend engineer</b> from <b>Kharkiv, Ukraine<b/>",
+        "Hello^500",
+        "Hi, i'm <b>Vladimir</b>^500 <br/> A motivated <u>frontend engineer<u/> from <u>Kharkiv<u/>, <u>Ukraine<u/>",
       ],
-      typeSpeed: 100,
+      typeSpeed: 50,
       showCursor: true,
-      backDelay: 50,
       smartBackspace: false,
     })
 

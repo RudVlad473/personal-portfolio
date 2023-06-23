@@ -1,0 +1,14 @@
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
+
+.noprojects {
+  @include scroll-snap-section;
+  @include scroll-snap-element;
+
+  text-align: center;
+
+  font-size: $fs-400;
+  color: $accentColor;
+
+  width: 100%;
+}

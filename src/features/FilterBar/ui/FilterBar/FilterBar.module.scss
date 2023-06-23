@@ -1,10 +1,21 @@
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/components/" as *;
+
 .filter-bar {
-  display: flex;
+  font-size: $fs-300;
+
+  min-height: $ui-step * 6;
 }
 
 .tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25em;
 }
 
-.clear-btn {
+.counter {
   
 }
+
+
