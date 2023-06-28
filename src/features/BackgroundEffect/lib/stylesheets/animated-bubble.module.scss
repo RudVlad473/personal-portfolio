@@ -1,0 +1,23 @@
+@use "../../consts/scss/animation.module.scss" as *;
+
+.animated-bubbles {
+  circle {
+    animation: bubble #{$bubble-animation-speed}s infinite;
+  }
+}
+
+@keyframes bubble {
+  $bubbleTranslation: $bubble-max-x-translation * 1%;
+
+  0% {
+    translate: $bubbleTranslation;
+  }
+
+  50% {
+    translate: $bubbleTranslation * -0.5;
+  }
+
+  100% {
+    translate: $bubbleTranslation;
+  }
+}

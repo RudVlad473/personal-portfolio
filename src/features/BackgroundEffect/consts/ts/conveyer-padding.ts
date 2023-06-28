@@ -1,0 +1,1 @@
+export const CONVEYER_PADDING = 2

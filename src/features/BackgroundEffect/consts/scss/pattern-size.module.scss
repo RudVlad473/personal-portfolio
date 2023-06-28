@@ -1,0 +1,14 @@
+@use "./animation.module.scss" as *;
+
+$pattern-default-width: 900;
+$pattern-default-height: 600;
+
+//add padding width (100% + x%) for animation of translation to look good
+$pattern-width: $pattern-default-width + ($pattern-default-width * $bubble-max-x-translation) * 0.01;
+
+$pattern-height: $pattern-default-height;
+
+:export {
+  patternWidth: $pattern-width;
+  patternHeight: $pattern-height;
+}
