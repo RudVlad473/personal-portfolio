@@ -1,12 +1,14 @@
 @mixin scroll-snap-container {
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 @mixin scroll-snap-section($vertical-alignment: center) {
   display: flex;
   align-items: $vertical-alignment;
   justify-content: center;
+
+  scroll-snap-stop: always;
 
   min-height: 100vh;
 }

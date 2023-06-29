@@ -1,3 +1,15 @@
+@mixin z-index-background {
+  z-index: -200;
+}
+
+@mixin z-index-bottom {
+  z-index: -200;
+}
+
+@mixin z-index-lowest {
+  z-index: -100;
+}
+
 @mixin z-index-default {
   z-index: 100;
 }
