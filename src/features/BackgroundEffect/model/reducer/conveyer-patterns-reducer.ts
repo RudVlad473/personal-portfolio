@@ -31,13 +31,9 @@ export function conveyerPatternsReducer(state: State, action: Action): State {
         return state
       }
 
-      const conveyedPatterns = state.map((pattern) => ({
-        ...pattern,
-        translationCount: pattern.translationCount + 1,
-      }))
+      const conveyedPatterns = state.map(({ id }) => ({ id }))
 
       const first = conveyedPatterns.shift()!
-      first.translationCount = 0
 
       return [...conveyedPatterns, first]
     }

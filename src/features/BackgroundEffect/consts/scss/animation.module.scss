@@ -2,7 +2,7 @@ $conveyer-animation-speed: 2;
 
 $bubble-animation-speed: $conveyer-animation-speed * 0.5;
 
-$bubble-max-x-translation: $conveyer-animation-speed  * 0.5;
+$bubble-max-x-translation: $conveyer-animation-speed * 0.75;
 
 :export {
   conveyerAnimationSpeed: $conveyer-animation-speed;

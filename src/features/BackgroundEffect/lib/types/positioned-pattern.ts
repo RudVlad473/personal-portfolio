@@ -9,6 +9,7 @@ export enum TPosition {
 export type TPositionedPattern = {
   rotated: boolean
   position: TPosition
+  top: number
 } & Pick<TPattern, "id">
 
 export type TPositionedPatterns = TPositionedPattern[]

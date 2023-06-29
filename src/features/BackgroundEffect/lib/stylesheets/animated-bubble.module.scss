@@ -3,6 +3,7 @@
 .animated-bubbles {
   circle {
     animation: bubble #{$bubble-animation-speed}s infinite;
+    animation-timing-function: ease-in-out;
   }
 }
 

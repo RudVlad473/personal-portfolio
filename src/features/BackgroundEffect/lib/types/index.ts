@@ -1,4 +1,5 @@
 export * from "./background-effect"
 export * from "./conveyer-pattern"
+export * from "./final-pattern"
 export * from "./pattern"
 export * from "./positioned-pattern"

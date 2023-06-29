@@ -7,7 +7,8 @@ import { FC, useEffect, useMemo, useRef, useState } from "react"
 export function useBackgroundEffect(
   initialPatterns: FC[],
   patternWidth: number,
-  patternHeight: number
+  patternHeight: number,
+  paddingPatterns = 0
 ) {
   const [amountOfPatternsToFill, setAmountOfPatternsToFill] = useState<number>(() => 0)
   const [documentHeight, setDocumentHeight] = useState<number>(() => 0)
@@ -37,14 +38,12 @@ export function useBackgroundEffect(
 
     const isSpaceLeft = documentHeight % patternHeight > 0
 
-    setAmountOfPatternsToFill(amount)
-  }, [documentHeight, patternHeight])
+
+
+    setAmountOfPatternsToFill(() => amount ? amount + paddingPatterns : 0)
+  }, [documentHeight, paddingPatterns, patternHeight])
 
   const patternsToFill: TPatterns = useMemo(() => {
-    if (!amountOfPatternsToFill) {
-      return []
-    }
-
     const patterns: TPatterns = []
 
     for (let i = 0; i < amountOfPatternsToFill; i++) {

@@ -6,14 +6,15 @@
 .container {
   position: absolute;
 
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+
+  transform: translateY(p.$pattern-height * -1.5px);
 
   top: 0;
   right: 0;
-  bottom: 0;
-
   left: 0;
+  bottom: 0;
 
   @include z-index-background;
   @include transition-300;
@@ -28,23 +29,25 @@
 .effect {
   $full-translation: 25%;
 
-  // position: absolute;
+  position: absolute;
 
-  transition-property: transform;
+  transition-property: all;
   transition-timing-function: linear;
+
+  transform-origin: center center;
 
   &--flipped {
     rotate: 180deg;
   }
 
   &--left {
-    // left: calc($full-translation * -1 + $body-padding-block);
-    margin-right: auto;
+    left: calc($full-translation * -1 + $body-padding-block);
+    // margin-right: auto;
   }
 
   &--right {
-    // right: calc($full-translation * -1 + $body-padding-block);
-    margin-left: auto;
+    right: calc($full-translation * -1 + $body-padding-block);
+    // margin-left: auto;
   }
 
   // &--center {

@@ -1,7 +1,5 @@
 import { TPattern } from "."
 
-export type ConveyerPatternEntity = Pick<TPattern, "id"> & {
-  translationCount: number
-}
+export type ConveyerPatternEntity = Pick<TPattern, "id">
 
 export type ConveyerPatternEntities = ConveyerPatternEntity[]
