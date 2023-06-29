@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/compose-function": "^0.0.30",
     "@types/lodash": "^4.14.195",
@@ -24,7 +25,9 @@
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.10",
     "sass": "^1.63.4",
-    "typed.js": "^2.0.9"
+    "typed.js": "^2.0.9",
+    "uuidv4": "^6.2.13",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
