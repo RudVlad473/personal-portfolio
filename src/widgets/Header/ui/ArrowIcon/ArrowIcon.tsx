@@ -1,6 +1,5 @@
-import styles from "./ArrowIcon.module.scss"
-import { debounce } from "lodash"
 import { FC, useCallback, useEffect, useState } from "react"
+import styles from "./ArrowIcon.module.scss"
 
 const windowObj = window
 const documentObj = document
