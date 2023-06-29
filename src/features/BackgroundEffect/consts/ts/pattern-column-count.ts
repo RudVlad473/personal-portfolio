@@ -1,1 +1,1 @@
-export const patternColumnCount = 3
+export const patternColumnCount = 2

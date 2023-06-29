@@ -1,0 +1,23 @@
+@use "../../../consts/scss/animation.module.scss" as *;
+
+.wave {
+  transition: all 1s ease;
+
+  animation: wave $bubble-animation-speed * 1s infinite;
+}
+
+@keyframes wave {
+  $waveTranslation: $waves-max-translation * 1%;
+
+  0% {
+    transform: translateY($waveTranslation);
+  }
+
+  50% {
+    transform: translateY($waveTranslation * -0.5);
+  }
+
+  100% {
+    transform: translateY($waveTranslation);
+  }
+}

@@ -1,0 +1,18 @@
+@use "./animation.module.scss" as *;
+
+$bottom-default-width: 1080;
+$bottom-default-height: 640;
+
+//add padding width (100% + x%) for animation of translation to look good
+$bottom-width: $bottom-default-width + ($bottom-default-width * $waves-max-translation) * 0.01;
+$bottom-height: $bottom-default-height + ($bottom-default-width * $waves-max-translation) * 0.01;
+
+$bottom-scale: 3;
+
+$bottom-waves-count: 1;
+
+:export {
+  bottomWidth: $bottom-width;
+  bottomHeight: $bottom-height;
+  bottomScale: $bottom-scale;
+}

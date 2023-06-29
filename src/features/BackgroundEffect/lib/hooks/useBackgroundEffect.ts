@@ -2,16 +2,19 @@ import { useWindowEvent } from "../../../../shared/lib/hooks"
 import { generateRandomInteger } from "../../../../shared/lib/utils"
 import { TPatterns } from "../types"
 import { uniqueId } from "lodash"
-import { FC, useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 export function useBackgroundEffect(
-  initialPatterns: FC[],
+  initialPatterns: React.ReactNode[],
   patternWidth: number,
   patternHeight: number,
   paddingPatterns = 0
 ) {
   const [amountOfPatternsToFill, setAmountOfPatternsToFill] = useState<number>(() => 0)
-  const [documentHeight, setDocumentHeight] = useState<number>(() => 0)
+  const [documentSize, setDocumentSize] = useState<{ width: number; height: number }>(() => ({
+    width: 0,
+    height: 0,
+  }))
   const lastPatternIndexRef = useRef<number>(0)
 
   function handleWindowResize() {
@@ -27,21 +30,24 @@ export function useBackgroundEffect(
     ]
 
     const documentHeight = Math.max(...possibleHeights)
+    const documentWidth = html.clientWidth
 
-    setDocumentHeight(() => documentHeight)
+    setDocumentSize(() => ({
+      height: documentHeight,
+      width: documentWidth,
+    }))
   }
 
   useWindowEvent("load", handleWindowResize)
+  // useWindowEvent("resize", handleWindowResize)
 
   useEffect(() => {
-    const amount = Math.floor(documentHeight / patternHeight)
+    const amount = Math.floor(documentSize.height / patternHeight)
 
-    const isSpaceLeft = documentHeight % patternHeight > 0
+    // const isSpaceLeft = documentHeight % patternHeight > 0
 
-
-
-    setAmountOfPatternsToFill(() => amount ? amount + paddingPatterns : 0)
-  }, [documentHeight, paddingPatterns, patternHeight])
+    setAmountOfPatternsToFill(() => (amount ? amount + paddingPatterns : 0))
+  }, [documentSize, paddingPatterns, patternHeight])
 
   const patternsToFill: TPatterns = useMemo(() => {
     const patterns: TPatterns = []
@@ -68,5 +74,6 @@ export function useBackgroundEffect(
 
   return {
     patternsToFill,
+    documentSize,
   } as const
 }

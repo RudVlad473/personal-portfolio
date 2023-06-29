@@ -1,8 +1,6 @@
-import { FC } from "react"
-
 export type TPattern = {
   id: string
-  pattern: FC
+  pattern: React.ReactNode
 }
 
 export type TPatterns = TPattern[]

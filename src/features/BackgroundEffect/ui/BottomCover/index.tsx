@@ -1,0 +1,1 @@
+export { BottomCover } from "./BottomCover"

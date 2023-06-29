@@ -3,21 +3,29 @@
 @use "../../consts/scss/animation.module.scss" as a;
 @use "../../consts/scss/pattern-size.module.scss" as p;
 
-.container {
+.container,
+.effect,
+.bottom {
   position: absolute;
 
+  @include z-index-background;
+}
+
+.container,
+.bottom {
+  @include transition-300;
+}
+
+.container {
   // display: flex;
   // flex-direction: column;
 
-  transform: translateY(p.$pattern-height * -1.5px);
+  transform: translateY(p.$pattern-height * -1px);
 
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-
-  @include z-index-background;
-  @include transition-300;
 
   opacity: 0;
 
@@ -28,8 +36,6 @@
 
 .effect {
   $full-translation: 25%;
-
-  position: absolute;
 
   transition-property: all;
   transition-timing-function: linear;
@@ -54,4 +60,21 @@
   //   left: 50%;
   //   transform: translateX(50%);
   // }
+}
+
+.bottom {
+  display: flex;
+  align-items: end;
+
+  transform: translateY(300px);
+
+  left: calc((-100% - 400px));
+  bottom: 0;
+
+  @include z-index-bottom;
+  // transform: translateY($padding-translation);
+
+  &--active {
+    left: 0;
+  }
 }

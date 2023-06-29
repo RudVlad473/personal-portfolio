@@ -1,9 +1,15 @@
-@use "../../consts/scss/animation.module.scss" as *;
+@use "../../../../../shared/lib/stylesheets/abstracts/" as *;
+@use '../../../consts/scss/animation.module.scss' as *;
 
-.animated-bubbles {
+.circle {
+  g {
+    stroke: $accentColor;
+    stroke-width: 3;
+  }
+
   circle {
     animation: bubble #{$bubble-animation-speed}s infinite;
-    animation-timing-function: ease-in-out;
+    // animation-timing-function: ease-in-out;
   }
 }
 

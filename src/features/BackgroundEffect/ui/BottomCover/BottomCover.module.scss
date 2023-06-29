@@ -1,0 +1,13 @@
+@use '../../consts/scss/bottom-size.module.scss' as *;
+
+.bottom {
+  display: flex;
+}
+
+.bottom-pattern {
+  scale: $bottom-scale;
+
+  &--turned {
+    transform: scaleX(-1);
+  }
+}

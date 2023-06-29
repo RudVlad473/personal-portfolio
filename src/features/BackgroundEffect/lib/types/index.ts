@@ -1,4 +1,6 @@
 export * from "./background-effect"
+export * from "./bottom-wave"
+export * from "./circle"
 export * from "./conveyer-pattern"
 export * from "./final-pattern"
 export * from "./pattern"

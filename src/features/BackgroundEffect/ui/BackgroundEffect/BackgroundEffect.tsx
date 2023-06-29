@@ -1,14 +1,17 @@
-import { patternColumnCount, patternHeight, patternWidth } from "../../consts"
-import { conveyerAnimationSpeed } from "../../consts/ts/animation"
+import {
+  CIRCLE_PATTERNS,
+  conveyerAnimationSpeed,
+  patternColumnCount,
+  patternHeight,
+  patternWidth,
+} from "../../consts"
 import { useBackgroundEffect, useConveyerPatterns, usePositionedPatterns } from "../../lib/hooks"
 import { TFinalPatterns, TPosition } from "../../lib/types"
-import { CirclePattern1 } from "../patterns/CirclePattern1"
-import { CirclePattern2 } from "../patterns/CirclePattern2"
-import { CirclePattern3 } from "../patterns/CirclePattern3"
-import { CirclePattern4 } from "../patterns/CirclePattern4"
-import { CirclePattern5 } from "../patterns/CirclePattern5"
+import { BottomCover } from "../BottomCover"
+import { Circle } from "../patterns/Circle"
 import styles from "./BackgroundEffect.module.scss"
 import classNames from "classnames"
+import { uniqueId } from "lodash"
 import { FC, useCallback, useEffect, useMemo, useState } from "react"
 
 const positionStyleMap: Record<TPosition, string> = {
@@ -17,17 +20,22 @@ const positionStyleMap: Record<TPosition, string> = {
   [TPosition.CENTER]: styles["effect--center"],
 }
 
-const patterns = [CirclePattern1, CirclePattern2, CirclePattern3, CirclePattern4, CirclePattern5]
-
 const conveyTranslationRateMs = conveyerAnimationSpeed * 1000
 
 const paddingPatternsCount = 1
 
 const paddingPatternsRows = paddingPatternsCount * patternColumnCount
 
+const patterns = CIRCLE_PATTERNS.map((pattern) => (
+  <Circle
+    key={uniqueId("circle_")}
+    circles={pattern}
+  />
+))
+
 export const BackgroundEffect: FC = () => {
   //get patterns to fill the page
-  const { patternsToFill } = useBackgroundEffect(
+  const { patternsToFill, documentSize } = useBackgroundEffect(
     patterns,
     patternWidth,
     patternHeight,
@@ -73,43 +81,53 @@ export const BackgroundEffect: FC = () => {
     [conveyerPatterns, positionedPatterns]
   )
 
+  const shouldShow = finalPatterns.length > 0 && translation > 0
+
   return (
-    <ul
-      className={classNames(styles["container"], {
-        [styles["container--active"]]: finalPatterns.length > 0 && translation > 0,
-      })}>
-      {finalPatterns.map(({ id, position, rotated, top }, index, arr) => {
-        const PatternComponent = patternsToFill.find((pattern) => pattern.id === id)!.pattern
+    <>
+      <ul
+        className={classNames(styles["container"], {
+          [styles["container--active"]]: shouldShow,
+        })}>
+        {finalPatterns.map(({ id, position, rotated, top }, index, arr) => {
+          const PatternComponent = patternsToFill.find((pattern) => pattern.id === id)!.pattern
 
-        const patternsCount = arr.length
+          const patternsCount = arr.length
 
-        const isConveyerStart = index === patternsCount - 1
+          const isConveyerStart = index === patternsCount - 1
 
-        // const initTop = top
-        const initTranslation = translation
+          // const initTop = top
+          const initTranslation = translation
 
-        const isNewPattern = index > positionedPatterns.findIndex((pattern) => pattern.id === id)
+          const isNewPattern = index > positionedPatterns.findIndex((pattern) => pattern.id === id)
 
-        return (
-          <li
-            id={id}
-            key={id}
-            className={classNames(styles.effect, positionStyleMap[position], {
-              [styles["effect--flipped"]]: rotated,
-            })}
-            style={{
-              top: isNewPattern
-                ? (patternsCount - paddingPatternsCount) * patternHeight
-                : top * patternHeight,
+          return (
+            <li
+              id={id}
+              key={id}
+              className={classNames(styles.effect, positionStyleMap[position], {
+                [styles["effect--flipped"]]: rotated,
+              })}
+              style={{
+                top: isNewPattern
+                  ? (patternsCount - paddingPatternsCount) * patternHeight
+                  : top * patternHeight,
 
-              transform: `translateY(${isConveyerStart ? 0 : initTranslation}px)`,
+                transform: `translateY(${isConveyerStart ? 0 : initTranslation}px)`,
 
-              transitionDuration: patternsCount * conveyerAnimationSpeed + "s",
-            }}>
-            <PatternComponent />
-          </li>
-        )
-      })}
-    </ul>
+                transitionDuration: patternsCount * conveyerAnimationSpeed + "s",
+              }}>
+              {PatternComponent}
+            </li>
+          )
+        })}
+      </ul>
+      <footer
+        className={classNames(styles.bottom, {
+          [styles["bottom--active"]]: shouldShow,
+        })}>
+        <BottomCover pageWidth={documentSize.width} />
+      </footer>
+    </>
   )
 }
