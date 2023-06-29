@@ -6,7 +6,7 @@ import { demoViewTimeoutMs } from "../../consts"
 import { useDemoView } from "../../lib/hooks"
 import styles from "./Demo.module.scss"
 import classNames from "classnames"
-import { FC, useRef, useState } from "react"
+import { FC, useCallback, useRef, useState } from "react"
 
 type DemoProps = NonNullable<TProject["demo"]>
 
@@ -17,13 +17,21 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
 
   const { demoTransformation, handleDisableView, handleEnableView } = useDemoView(isDisabled)
 
-  useOuterClick(demoRef, () => {
-    setIsDisabled(true)
+  const handleOnMouseLeave = useCallback(() => {
+    setIsDisabled((disabled) => disabled || !disabled)
 
     handleDisableView()
 
     setTimeout(() => setIsDisabled(false), demoViewTimeoutMs)
-  })
+  }, [handleDisableView])
+
+  // useOuterClick(demoRef, () => {
+  //   setIsDisabled(true)
+
+  //   handleDisableView()
+
+  //   setTimeout(() => setIsDisabled(false), demoViewTimeoutMs)
+  // })
 
   return (
     <>
@@ -31,7 +39,7 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
         ref={demoRef}
         className={styles.wrapper}
         onMouseEnter={handleEnableView}
-        // onMouseLeave={handleOnMouseLeave}
+        onMouseLeave={handleOnMouseLeave}
         style={{
           transform: `
         translate(${demoTransformation.x}px) 
