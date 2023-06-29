@@ -17,6 +17,7 @@ export const Project = memo<ProjectProps>(({ title, description, demo, links }) 
         <h1>
           <Link
             url={links.deployment}
+            onClick={!links.deployment ? () => {} : undefined}
             toNewPage>
             {title}
           </Link>
