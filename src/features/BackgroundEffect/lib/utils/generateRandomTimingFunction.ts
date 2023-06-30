@@ -2,7 +2,7 @@ import { generateRandomInteger } from "../../../../shared/lib/utils"
 
 const timingFunctions = ["ease", "ease-in", "ease-out", "ease-in-out", "linear"] as const
 
-export function generateRandomTimingFunction(notToEqual?: typeof timingFunctions) {
+export function generateRandomTimingFunction(notToEqual?: typeof timingFunctions[number] | undefined) {
   let randomIndex = 0
 
   if (notToEqual === undefined) {

@@ -1,8 +1,6 @@
 @use "../../../consts/scss/animation.module.scss" as *;
 
 .wave {
-  transition: all 1s ease;
-
   animation: wave $bubble-animation-speed * 1s infinite;
 }
 

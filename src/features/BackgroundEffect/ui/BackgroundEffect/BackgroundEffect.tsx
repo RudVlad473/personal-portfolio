@@ -57,7 +57,7 @@ export const BackgroundEffect: FC = () => {
 
   // convey patterns up by predefined interval
   useEffect(() => {
-    const initialTranslationTimeout = setTimeout(handleBackgroundTranslation, 500)
+    const initialTranslationTimeout = setTimeout(handleBackgroundTranslation, 0)
 
     const translationInterval = setInterval(handleBackgroundTranslation, conveyTranslationRateMs)
 
