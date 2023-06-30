@@ -1,11 +1,13 @@
-@mixin transition-100 {
-  transition: all 0.15s ease-in-out;
+$default-timing-function: linear;
+
+@mixin transition-100($timing-function: $default-timing-function) {
+  transition: all 0.15s $timing-function;
 }
 
-@mixin transition-200 {
-  transition: all 0.25s ease-in-out;
+@mixin transition-200($timing-function: $default-timing-function) {
+  transition: all 0.25s $timing-function;
 }
 
-@mixin transition-300 {
-  transition: all 0.5s ease-in-out;
+@mixin transition-300($timing-function: $default-timing-function) {
+  transition: all 0.5s $timing-function;
 }
