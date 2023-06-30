@@ -14,4 +14,10 @@
   @include scroll-snap-element;
 
   width: 100%;
+
+  @include transition-300;
+
+  &:hover {
+    scale: 1.05;
+  }
 }
