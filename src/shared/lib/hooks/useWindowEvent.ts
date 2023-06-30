@@ -22,8 +22,6 @@ export const useWindowEvent = <T extends Event = Event>(
 
     window.addEventListener(eventType, eventListener)
 
-    return () => {
-      window.removeEventListener(eventType, eventListener)
-    }
+    return () => window.removeEventListener(eventType, eventListener)
   }, [eventType])
 }
