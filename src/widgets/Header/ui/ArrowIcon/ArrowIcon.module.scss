@@ -1,9 +1,12 @@
 @use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .arrow {
   fill: $accentColor;
 
   scale: 2;
+
+  @include transition-100;
 
   will-change: transform;
 }
