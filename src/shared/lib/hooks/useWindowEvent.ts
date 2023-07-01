@@ -5,7 +5,8 @@ type EventType = keyof WindowEventMap
 
 export const useWindowEvent = <T extends Event = Event>(
   eventType: EventType,
-  callback: EventCallback<T>
+  callback: EventCallback<T>,
+  options?: boolean | AddEventListenerOptions | undefined
 ) => {
   const callbackRef = useRef<EventCallback<T>>()
 
@@ -20,8 +21,8 @@ export const useWindowEvent = <T extends Event = Event>(
       }
     }
 
-    window.addEventListener(eventType, eventListener)
+    window.addEventListener(eventType, eventListener, options)
 
     return () => window.removeEventListener(eventType, eventListener)
-  }, [eventType])
+  }, [eventType, options])
 }

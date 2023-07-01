@@ -1,13 +1,18 @@
-import { FC, useCallback, useState } from "react"
 import { useWindowEvent } from "../../../../shared/lib/hooks"
 import { scrollPercentageThreshold } from "../../consts"
 import styles from "./ArrowIcon.module.scss"
+import { FC, useCallback, useEffect, useState } from "react"
 
 const windowObj = window
 const documentObj = document
 
 export const ArrowIcon: FC = () => {
   const [scrollPercentage, setScrollPercentage] = useState<number>(() => 0)
+
+  // useEffect(()=> {
+  //   console.log({scrollPercentage});
+    
+  // }, [scrollPercentage])
 
   const handleScroll = useCallback(() => {
     const scrollTop = windowObj.scrollY || documentObj.documentElement.scrollTop

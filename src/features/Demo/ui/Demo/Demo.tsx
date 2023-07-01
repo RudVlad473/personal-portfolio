@@ -25,6 +25,15 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
     setTimeout(() => setIsDisabled(false), demoViewTimeoutMs)
   }, [handleDisableView])
 
+  const handleOnMouseOver = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!isDisabled) {
+        handleEnableView(event)
+      }
+    },
+    [handleEnableView, isDisabled]
+  )
+
   // useOuterClick(demoRef, () => {
   //   setIsDisabled(true)
 
@@ -40,6 +49,7 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
         className={styles.wrapper}
         onMouseEnter={handleEnableView}
         onMouseLeave={handleOnMouseLeave}
+        onMouseOver={handleOnMouseOver}
         style={{
           transform: `
         translate(${demoTransformation.x}px) 

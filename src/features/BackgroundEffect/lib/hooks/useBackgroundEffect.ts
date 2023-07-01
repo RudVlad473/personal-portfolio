@@ -2,7 +2,7 @@ import { useWindowEvent } from "../../../../shared/lib/hooks"
 import { generateRandomInteger } from "../../../../shared/lib/utils"
 import { TPatterns } from "../types"
 import { uniqueId } from "lodash"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 
 export function useBackgroundEffect(
   initialPatterns: React.ReactNode[],
@@ -38,8 +38,13 @@ export function useBackgroundEffect(
     }))
   }
 
-  useWindowEvent("load", handleWindowResize)
-  // useWindowEvent("resize", handleWindowResize)
+  useLayoutEffect(() => {
+    handleWindowResize()
+  }, [])
+
+  // useWindowEvent("load", handleWindowResize, {
+  //   once: true,
+  // })
 
   useEffect(() => {
     const amount = Math.floor(documentSize.height / patternHeight)
