@@ -24,6 +24,12 @@ body {
   height: 1em;
   width: 1em;
   background: $backgroundColor;
+
+  @include m.transition-300;
+
+  &:hover {
+    background-color: $secondaryButtonColor;
+  }
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,4 +1,3 @@
-import { useOuterClick } from "../../../../shared/lib/hooks"
 import { DarkBackground } from "../../../../shared/ui/DarkBackground"
 import { Portal } from "../../../../shared/ui/Portal"
 import { TDemo, TProject } from "../../../../widgets/ProjectList/lib/types"
@@ -25,22 +24,13 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
     setTimeout(() => setIsDisabled(false), demoViewTimeoutMs)
   }, [handleDisableView])
 
-  const handleOnMouseOver = useCallback(
-    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if (!isDisabled) {
-        handleEnableView(event)
-      }
-    },
-    [handleEnableView, isDisabled]
-  )
-
-  // useOuterClick(demoRef, () => {
-  //   setIsDisabled(true)
-
-  //   handleDisableView()
-
-  //   setTimeout(() => setIsDisabled(false), demoViewTimeoutMs)
-  // })
+  // const handleOnMouseOver = useCallback(
+  //   (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //       handleEnableView(event)
+  //     }
+  //   },
+  //   [handleEnableView, isDisabled]
+  // )
 
   return (
     <>
@@ -49,7 +39,7 @@ export const Demo: FC<DemoProps> = ({ type, url }) => {
         className={styles.wrapper}
         onMouseEnter={handleEnableView}
         onMouseLeave={handleOnMouseLeave}
-        onMouseOver={handleOnMouseOver}
+        onMouseOver={handleEnableView}
         style={{
           transform: `
         translate(${demoTransformation.x}px) 

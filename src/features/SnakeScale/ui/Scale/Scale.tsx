@@ -1,6 +1,6 @@
+import { FC } from "react"
 import { TScale } from "../../lib/types"
 import styles from "./Scale.module.scss"
-import { FC } from "react"
 
 type ScaleProps = TScale
 

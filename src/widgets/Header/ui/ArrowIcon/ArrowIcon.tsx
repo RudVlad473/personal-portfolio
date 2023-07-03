@@ -1,24 +1,14 @@
 import { useWindowEvent } from "../../../../shared/lib/hooks"
+import { getCurrentScrollPercentage } from "../../../../shared/lib/utils"
 import { scrollPercentageThreshold } from "../../consts"
 import styles from "./ArrowIcon.module.scss"
-import { FC, useCallback, useEffect, useState } from "react"
-
-const windowObj = window
-const documentObj = document
+import { FC, useCallback, useState } from "react"
 
 export const ArrowIcon: FC = () => {
   const [scrollPercentage, setScrollPercentage] = useState<number>(() => 0)
 
-  // useEffect(()=> {
-  //   console.log({scrollPercentage});
-    
-  // }, [scrollPercentage])
-
   const handleScroll = useCallback(() => {
-    const scrollTop = windowObj.scrollY || documentObj.documentElement.scrollTop
-    const windowHeight =
-      documentObj.documentElement.scrollHeight - documentObj.documentElement.clientHeight
-    const currentScrollPercentage = (scrollTop / windowHeight) * 100
+    const currentScrollPercentage = getCurrentScrollPercentage()
 
     setScrollPercentage((prevPercentage) =>
       Math.abs(prevPercentage - currentScrollPercentage) > scrollPercentageThreshold
@@ -32,7 +22,7 @@ export const ArrowIcon: FC = () => {
   return (
     <div
       style={{
-        transform: `rotateZ(${scrollPercentage}deg)`,
+        transform: `rotate(${scrollPercentage}deg)`,
       }}
       className={styles["arrow"]}>
       <svg

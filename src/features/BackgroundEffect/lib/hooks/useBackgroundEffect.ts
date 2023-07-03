@@ -1,4 +1,3 @@
-import { useWindowEvent } from "../../../../shared/lib/hooks"
 import { generateRandomInteger } from "../../../../shared/lib/utils"
 import { TPatterns } from "../types"
 import { uniqueId } from "lodash"

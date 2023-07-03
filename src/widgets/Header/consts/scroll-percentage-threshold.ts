@@ -1,1 +1,1 @@
-export const scrollPercentageThreshold = 5
+export const scrollPercentageThreshold = 7.5

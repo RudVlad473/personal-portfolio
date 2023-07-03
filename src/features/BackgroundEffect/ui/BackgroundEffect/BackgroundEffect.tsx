@@ -122,6 +122,7 @@ export const BackgroundEffect: FC = () => {
           )
         })}
       </ul>
+
       <footer
         className={classNames(styles.bottom, {
           [styles["bottom--active"]]: shouldShow,

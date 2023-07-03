@@ -42,8 +42,6 @@
 
   transform-origin: center center;
 
-  will-change: transform;
-
   &--flipped {
     rotate: 180deg;
   }

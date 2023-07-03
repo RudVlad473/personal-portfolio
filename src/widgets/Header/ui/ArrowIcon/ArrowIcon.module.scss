@@ -6,7 +6,7 @@
 
   scale: 2;
 
-  @include transition-100;
+  transform-origin: center center;
 
-  will-change: transform;
+  @include transition-100;
 }

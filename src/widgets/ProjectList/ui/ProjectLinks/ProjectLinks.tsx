@@ -1,5 +1,5 @@
-import { ActionButton } from "../../../../../../shared/ui/ActionButton"
-import { Link } from "../../../../../../shared/ui/Link"
+import { ActionButton } from "../../../../shared/ui/ActionButton"
+import { Link } from "../../../../shared/ui/Link"
 import styles from "./ProjectLinks.module.scss"
 import { FC } from "react"
 

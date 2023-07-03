@@ -2,7 +2,7 @@ import { useProjectsContext } from "../../../../shared/lib/hooks"
 import { TSeparatorTypes } from "../../../../shared/lib/types/separator"
 import { Separator } from "../../../../shared/ui/Separator"
 import { NoProjects } from "../NoProjects"
-import { Project } from "../Project/ui"
+import { Project } from "../Project"
 import styles from "./ProjectList.module.scss"
 import { FC } from "react"
 

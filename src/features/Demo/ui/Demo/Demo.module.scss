@@ -20,8 +20,6 @@ $desktop-width: 100%;
 }
 
 .demo {
-  z-index: 1000;
-
   border: 0.25em solid $textColor;
 
   &--desktop,
@@ -33,10 +31,6 @@ $desktop-width: 100%;
     max-width: $desktop-width;
 
     border-radius: 0.5em;
-
-    // &:hover {
-    //   scale: 2;
-    // }
   }
 
   &--mobile {
@@ -44,17 +38,9 @@ $desktop-width: 100%;
     max-width: $desktop-width * 0.5;
 
     border-radius: 1em;
-
-    // &:hover {
-    //   scale: 2;
-    // }
   }
 
   &--disabled {
     border-color: $accentColor;
   }
-
-  // &:hover {
-  //   border-color: $accentColor;
-  // }
 }

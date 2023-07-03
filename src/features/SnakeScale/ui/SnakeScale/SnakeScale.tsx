@@ -1,18 +1,18 @@
-import classNames from "classnames"
-import { FC, Fragment } from "react"
 import { useSnakeScales } from "../../lib/hooks"
 import { TScale } from "../../lib/types"
 import { Scale } from "../Scale"
 import styles from "./SnakeScale.module.scss"
+import classNames from "classnames"
+import { Fragment, memo } from "react"
 
 type SnakeScaleProps = {
   scales: TScale[]
   onScaleClick: (scale: TScale) => void
-  selectedScales: TScale['title'][]
+  selectedScales: TScale["title"][]
 }
 
 //"Snake scale" is a hexagon-like group of shapes
-export const SnakeScale: FC<SnakeScaleProps> = ({ scales, onScaleClick, selectedScales }) => {
+export const SnakeScale = memo<SnakeScaleProps>(({ scales, onScaleClick, selectedScales }) => {
   const { colCount, rowCount, scalesMatrix, calculateScaleTranslation } = useSnakeScales(scales)
 
   return (
@@ -44,4 +44,4 @@ export const SnakeScale: FC<SnakeScaleProps> = ({ scales, onScaleClick, selected
       })}
     </ul>
   )
-}
+})
