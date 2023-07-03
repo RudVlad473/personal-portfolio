@@ -1,13 +1,17 @@
 import { Link } from "../../../../shared/ui/Link"
 import { CONTACTS } from "../../lib/consts/contacts"
 import styles from "./ContactList.module.scss"
+import { motion } from "framer-motion"
 import { FC } from "react"
 
 export const ContactList: FC = () => {
   return (
     <ul className={styles["contact-list"]}>
       {CONTACTS.map(({ link, logo }) => (
-        <li
+        <motion.li
+          whileHover={{
+            scale: 1.5,
+          }}
           key={link}
           className={styles.contact}>
           <Link
@@ -16,7 +20,7 @@ export const ContactList: FC = () => {
             toNewPage>
             {logo}
           </Link>
-        </li>
+        </motion.li>
       ))}
     </ul>
   )

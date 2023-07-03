@@ -42,6 +42,12 @@
 }
 
 .demo {
+  display:inline;
+
+  transform-origin: center center;
+
+  @include z-index-overlay;
+
   margin-left: auto;
 
   &:empty {

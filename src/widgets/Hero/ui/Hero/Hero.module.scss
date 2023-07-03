@@ -2,15 +2,15 @@
 @use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .typing {
-  @include scroll-snap-section(start);
+  @include scroll-snap-section;
   @include scroll-snap-element;
 
   margin-right: auto;
-  padding-top: $heading-height * 2;
+  //  margin-top: $heading-height * 2;
 }
 
 .skill-scales {
-  @include scroll-snap-section(center);
+  @include scroll-snap-section;
   @include scroll-snap-element;
 
   width: 100%;

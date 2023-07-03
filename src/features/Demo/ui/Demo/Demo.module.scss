@@ -3,11 +3,6 @@
 
 $desktop-width: 100%;
 
-.wrapper,
-.demo {
-  @include transition-300(ease-in-out);
-}
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -15,12 +10,12 @@ $desktop-width: 100%;
   position: relative;
 
   @include z-index-modal;
-
-  will-change: transform;
 }
 
 .demo {
   border: 0.25em solid $textColor;
+
+  @include transition-100;
 
   &--desktop,
   &--mobile {

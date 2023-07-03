@@ -13,11 +13,10 @@
 
 .project-section {
   @include scroll-snap-section;
+  @include scroll-snap-element;
 }
 
 .project {
-  @include scroll-snap-element;
-
   display: flex;
   flex-direction: column;
   gap: 5em;

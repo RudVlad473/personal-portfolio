@@ -1,3 +1,4 @@
+import { useWindowEvent } from "../../../../shared/lib/hooks"
 import {
   CIRCLE_PATTERNS,
   conveyerAnimationSpeed,
@@ -51,6 +52,10 @@ export const BackgroundEffect: FC = () => {
   const { conveyerPatterns, conveyUp } = useConveyerPatterns(patternsToFill)
 
   const handleBackgroundTranslation = useCallback(() => {
+    if (document.hidden) {
+      return
+    }
+
     setTranslation(() => patternsToFill.length * patternHeight)
     conveyUp()
   }, [conveyUp, patternsToFill.length])

@@ -25,13 +25,11 @@
     0 s.$corner-cut
   );
 
-  will-change: background-size;
-
   @include transition-100;
 
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
 
+  &:hover {
     background-size: 110%;
   }
 }
