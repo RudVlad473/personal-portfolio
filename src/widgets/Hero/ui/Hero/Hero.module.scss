@@ -2,11 +2,14 @@
 @use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .typing {
-  @include scroll-snap-section;
+  @include scroll-snap-section(start);
   @include scroll-snap-element;
 
   margin-right: auto;
-  //  margin-top: $heading-height * 2;
+}
+
+.padded-wrapper {
+  margin-top: $heading-height * 2;
 }
 
 .skill-scales {

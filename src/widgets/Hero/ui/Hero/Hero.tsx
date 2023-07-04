@@ -14,7 +14,9 @@ export const Hero: FC = () => {
     <>
       <ErrorBoundary fallback={<></>}>
         <h1 className={styles.typing}>
-          <Typing />
+          <div className={styles["padded-wrapper"]}>
+            <Typing />
+          </div>
         </h1>
       </ErrorBoundary>
 
