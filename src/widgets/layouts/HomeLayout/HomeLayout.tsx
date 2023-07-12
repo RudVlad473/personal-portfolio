@@ -7,7 +7,7 @@ type HomeLayoutProps = PropsWithChildren
 
 export const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
   return (
-    <main className={styles["home-layout"]}>
+    <main className={styles['home-layout']}>
       <div className={styles.heading}>
         <Header />
       </div>

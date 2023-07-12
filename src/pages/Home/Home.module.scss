@@ -1,11 +1,12 @@
 @use "../../shared/lib/stylesheets/mixins/" as *;
 @use "../../shared/lib/stylesheets/components/" as *;
+@use "../../shared/lib/stylesheets/abstracts/" as *;
 
 .home {
   display: flex;
   flex-direction: column;
 
-  gap: $ui-step * 2;
+  gap: calc(var(--ui-step) * 2);
 }
 
 .projects {
@@ -18,5 +19,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $ui-step * 10;
+  gap: calc(var(--ui-step) * 10);
+}
+
+@media (max-width: $bp-medium) {
+}
+
+@media (max-width: $bp-small) {
+  .hero {
+    @include padded-half-content-width(0px);
+  }
 }

@@ -10,8 +10,6 @@
   circle {
     animation: bubble #{$bubble-animation-speed}s infinite;
     // animation-timing-function: ease-in-out;
-
-    will-change: translate;
   }
 }
 
@@ -28,5 +26,25 @@
 
   100% {
     translate: $bubbleTranslation;
+  }
+}
+
+@media (max-width: $bp-medium) {
+  :root {
+    .circle {
+      circle {
+        scale: 0.9;
+      }
+    }
+  }
+}
+
+@media (max-width: $bp-small) {
+  :root {
+    .circle {
+      circle {
+        scale: 0.8;
+      }
+    }
   }
 }

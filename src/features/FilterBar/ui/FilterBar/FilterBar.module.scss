@@ -2,9 +2,9 @@
 @use "../../../../shared/lib/stylesheets/components/" as *;
 
 .filter-bar {
-  font-size: $fs-300;
+  font-size: var(--fs-300);
 
-  min-height: $ui-step * 6;
+  min-height: calc(var(--ui-step) * 6);
 }
 
 .tags {
@@ -15,7 +15,4 @@
 }
 
 .counter {
-  
 }
-
-

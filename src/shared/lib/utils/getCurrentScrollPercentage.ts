@@ -7,5 +7,5 @@ export function getCurrentScrollPercentage() {
     documentObj.documentElement.scrollHeight - documentObj.documentElement.clientHeight
   const currentScrollPercentage = (scrollTop / windowHeight) * 100
 
-  return currentScrollPercentage
+  return currentScrollPercentage || 0
 }

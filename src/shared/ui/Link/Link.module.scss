@@ -4,9 +4,9 @@
 .link {
   position: relative;
 
-  white-space: nowrap;
-
   &--animated {
+    display: block;
+
     &::before {
       content: "";
 

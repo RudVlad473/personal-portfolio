@@ -1,23 +1,9 @@
-import { useWindowEvent } from "../../../../shared/lib/hooks"
-import { getCurrentScrollPercentage } from "../../../../shared/lib/utils"
-import { scrollPercentageThreshold } from "../../consts"
+import { useScrollWithThreshold } from "../../lib/hooks"
 import styles from "./ArrowIcon.module.scss"
-import { FC, useCallback, useState } from "react"
+import { FC } from "react"
 
 export const ArrowIcon: FC = () => {
-  const [scrollPercentage, setScrollPercentage] = useState<number>(() => 0)
-
-  const handleScroll = useCallback(() => {
-    const currentScrollPercentage = getCurrentScrollPercentage()
-
-    setScrollPercentage((prevPercentage) =>
-      Math.abs(prevPercentage - currentScrollPercentage) > scrollPercentageThreshold
-        ? currentScrollPercentage
-        : prevPercentage
-    )
-  }, [])
-
-  useWindowEvent("scroll", handleScroll)
+  const { scrollPercentage } = useScrollWithThreshold()
 
   return (
     <div

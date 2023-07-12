@@ -1,4 +1,5 @@
-@use '../../../../shared/lib/stylesheets/abstracts/' as *;
+@use "../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .header {
   display: flex;
@@ -6,8 +7,26 @@
   justify-content: space-between;
 
   width: 100%;
+
+  @include transition-200;
+
+  opacity: 1;
+}
+
+.arrow {
 }
 
 .contacts {
-  font-size: $fs-200;
+  font-size: var(--fs-200);
+}
+
+@media (max-width: $bp-medium) {
+}
+
+@media (max-width: $bp-small) {
+  .header {
+    &--disabled {
+      opacity: 0;
+    }
+  }
 }

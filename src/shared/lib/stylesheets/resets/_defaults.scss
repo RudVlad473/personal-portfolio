@@ -14,7 +14,7 @@ body {
   color: $textColor;
   background-color: $backgroundColor;
   font-weight: $normal;
-  font-size: c.$ui-font-step;
+  font-size: var(--ui-font-step);
 
   position: relative;
 

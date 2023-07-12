@@ -3,7 +3,6 @@
 .wave {
   animation: wave $bubble-animation-speed * 1s infinite;
 
-  will-change: transform;
 }
 
 @keyframes wave {

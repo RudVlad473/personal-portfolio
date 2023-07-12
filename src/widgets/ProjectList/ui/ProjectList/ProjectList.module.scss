@@ -3,9 +3,10 @@
 @use "../../../../shared/lib/stylesheets/mixins/" as *;
 
 .project-list {
-  $list-gap: $ui-step * 15;
+  $list-gap: calc(var(--ui-step) * 15);
 
   display: grid;
+  grid-template-columns: 1fr;
   gap: $list-gap;
 
   margin: $list-gap auto;
@@ -17,7 +18,12 @@
 }
 
 .project {
+  $project-min-width: 275px;
+  $project-max-width: 1000px;
+
   display: flex;
   flex-direction: column;
   gap: 5em;
+
+  max-width: clamp($project-min-width, 50vw, $project-max-width);
 }

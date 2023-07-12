@@ -18,9 +18,7 @@ export const Link: FC<LinkProps> = ({
 }) => {
   return (
     <a
-      className={classNames(styles.link, {
-        [styles["link--animated"]]: !isPlain,
-      })}
+      className={classNames(styles.link, { [styles["link--animated"]]: !isPlain }, "ellipsis")}
       href={url}
       target={toNewPage ? "_blank" : "_self"}
       rel="noopener noreferrer"

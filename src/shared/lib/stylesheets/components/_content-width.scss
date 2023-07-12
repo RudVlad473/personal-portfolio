@@ -1,3 +1,18 @@
-@use './step' as *;
+@use "./step" as *;
+@use "../abstracts/gutters/" as *;
 
-$content-width: $ui-step * 80;
+:root {
+  --content-width: calc(var(--ui-step) * 90);
+}
+
+@media (max-width: $bp-medium) {
+  :root {
+    --content-width: calc(var(--ui-step) * 110);
+  }
+}
+
+@media (max-width: $bp-small) {
+  :root {
+    --content-width: 90vw;
+  }
+}

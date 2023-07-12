@@ -2,7 +2,7 @@
 
 .typing {
   font-family: $codeFontFamily;
-  font-size: $fs-400;
+  font-size: var(--fs-400);
 
   text-align: start;
 
@@ -16,3 +16,4 @@
     user-select: none;
   }
 }
+

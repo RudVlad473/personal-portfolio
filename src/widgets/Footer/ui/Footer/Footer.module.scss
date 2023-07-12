@@ -12,11 +12,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: $ui-step * 6;
+  gap: calc(var(--ui-step) * 6);
 
   margin-left: auto;
 }
 
 .name {
-  font-size: $fs-400;
+  font-size: var(--fs-400);
 }

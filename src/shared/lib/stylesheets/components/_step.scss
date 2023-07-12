@@ -1,3 +1,24 @@
-$ui-step: 10px;
+@use "../abstracts/gutters/" as *;
 
-$ui-font-step: 16px;
+$default-ui-step: 10px;
+
+$default-ui-font-step: 16px;
+
+:root {
+  --ui-step: #{$default-ui-step};
+  --ui-font-step: #{$default-ui-font-step};
+}
+
+@media (max-width: $bp-medium) {
+  :root {
+    --ui-step: #{$default-ui-step} * 0.75;
+    // --ui-font-step: #{$default-ui-font-step} * 0.9;
+  }
+}
+
+@media (max-width: $bp-small) {
+  :root {
+    --ui-step: #{$default-ui-step} * 0.5;
+    --ui-font-step: #{$default-ui-font-step} * 0.9;
+  }
+}

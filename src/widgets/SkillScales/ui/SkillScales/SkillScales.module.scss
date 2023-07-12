@@ -3,12 +3,12 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $ui-font-step * 4;
+  gap: calc(var(--ui-step) * 4);
 }
 
 .skill-scales {
   min-width: 300px;
-  width: 800px;
+  width: calc(var(--ui-step) * 90);
 
   margin-inline: auto;
 }

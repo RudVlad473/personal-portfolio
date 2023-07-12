@@ -8,6 +8,9 @@
   align-items: $vertical-alignment;
   justify-content: center;
 
+  min-width: 0;
+  max-width: 100%;
+
   // scroll-snap-stop: always;
 
   min-height: 100vh;

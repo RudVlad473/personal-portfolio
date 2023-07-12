@@ -32,7 +32,7 @@ export const Project = memo<ProjectProps>(({ title, description, demo, links }) 
         ref={projectRef}
         className={styles.project}>
         <header className={styles.heading}>
-          <motion.h1 {...getAnimationProps(TPosition.FROM_LEFT)}>
+          <motion.h1 {...getAnimationProps(TPosition.FROM_LEFT)} className={styles.title}>
             <Link
               url={links.deployment}
               onClick={!links.deployment ? () => {} : undefined}
@@ -76,9 +76,9 @@ export const Project = memo<ProjectProps>(({ title, description, demo, links }) 
               initial={{
                 transform: `translate(0px)`,
               }}
-              whileHover={{
-                transform: `scale(${scale}) translate(${x / scale}px)`,
-              }}
+              // whileHover={{
+              //   transform: `scale(${scale}) translate(${x / scale}px)`,
+              // }}
               transition={{ duration: 1 }}>
               {links.deployment ? (
                 <Link

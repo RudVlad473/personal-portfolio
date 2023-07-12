@@ -1,10 +1,9 @@
 @use "../../../../shared/lib/stylesheets/" as *;
 
-
 .project,
 .contents,
 .article {
-  gap: $ui-step * 5;
+  gap: calc(var(--ui-step) * 4);
 }
 
 .project,
@@ -22,8 +21,14 @@
   align-items: center;
   justify-content: space-between;
 
-  font-size: $fs-300;
+  gap: calc(var(--ui-step) * 4);
+
+  font-size: var(--fs-300);
   font-weight: $bold;
+}
+
+.title {
+  max-width: 80%;
 }
 
 .contents {
@@ -37,12 +42,12 @@
 }
 
 .description {
-  font-size: $fs-100;
+  font-size: var(--fs-100);
   text-align: justify;
 }
 
 .demo {
-  display:inline;
+  display: inline;
 
   transform-origin: center center;
 
@@ -55,5 +60,19 @@
   }
 }
 
-.links {
+@media (max-width: $bp-medium) {
+  .contents {
+    flex-direction: column;
+  }
+
+  .demo {
+    pointer-events: none;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: $bp-small) {
+  .demo {
+    display: none;
+  }
 }
