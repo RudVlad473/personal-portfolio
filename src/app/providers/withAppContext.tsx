@@ -1,11 +1,7 @@
 import { ProjectFiltersContextProvider, projectFiltersInitValue } from "../../shared/lib/context"
-import {
-  ProjectsContextProvider,
-  projectsContextInitValue,
-} from "../../shared/lib/context/projects-context"
+import { ProjectsContextProvider } from "../../shared/lib/context/projects-context"
 import { TProjectFilters } from "../../shared/lib/types"
 import { useFilteredProjects } from "../../widgets/ProjectList/lib/hooks"
-import { TProjects } from "../../widgets/ProjectList/lib/types"
 import { useState } from "react"
 
 export const withAppContext = (component: () => React.ReactNode) => () => {

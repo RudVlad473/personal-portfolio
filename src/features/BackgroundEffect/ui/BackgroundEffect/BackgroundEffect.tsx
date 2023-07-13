@@ -1,4 +1,3 @@
-import { useWindowEvent } from "../../../../shared/lib/hooks"
 import {
   CIRCLE_PATTERNS,
   conveyerAnimationSpeed,

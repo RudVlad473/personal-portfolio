@@ -1,7 +1,7 @@
 import { TDemo, TProject } from "../../../../widgets/ProjectList/lib/types"
 import styles from "./Demo.module.scss"
 import classNames from "classnames"
-import { FC, forwardRef } from "react"
+import { forwardRef } from "react"
 
 const typeStyleMap: Record<TDemo, string> = {
   [TDemo.DESKTOP]: styles["demo--desktop"],

@@ -1,5 +1,4 @@
-import styles from "./Portal.module.scss"
-import { FC, PropsWithChildren, memo, useId } from "react"
+import { PropsWithChildren, memo, useId } from "react"
 import { createPortal } from "react-dom"
 
 type PortalProps = PropsWithChildren

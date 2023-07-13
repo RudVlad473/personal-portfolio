@@ -1,6 +1,5 @@
 import { TFilterTag } from "../../lib/types"
 import styles from "./FilterTag.module.scss"
-import classNames from "classnames"
 import { FC } from "react"
 
 type FilterTagProps = TFilterTag & {

@@ -19,7 +19,7 @@ export function useProjectDemo(demoRef: React.RefObject<HTMLDivElement>) {
     const elementWidth = elementRect.width
     const elementHeight = elementRect.height
     const elementClientX = elementRect.x
-    const elementClientY = elementRect.y
+    // const elementClientY = elementRect.y
     const windowWidth = window.innerWidth || document.documentElement.clientWidth
     const windowHeight = window.innerHeight || document.documentElement.clientHeight
 
