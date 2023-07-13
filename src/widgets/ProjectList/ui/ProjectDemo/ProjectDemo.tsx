@@ -10,7 +10,7 @@ import { FullScreenIcon } from "../icons/FullScreenIcon"
 import styles from "./ProjectDemo.module.scss"
 import classNames from "classnames"
 import { motion } from "framer-motion"
-import { FC, memo, useCallback, useEffect, useRef } from "react"
+import { FC, memo, useCallback, useRef } from "react"
 
 type ProjectDemoProps = Required<Pick<TProject, "demo" | "links">>
 
@@ -20,7 +20,7 @@ export const ProjectDemo: FC<ProjectDemoProps> = memo(({ demo, links }) => {
 
   const containerRef = useRef<HTMLDivElement>(null)
   const demoRef = useRef<HTMLDivElement>(null)
-  const { x, y, scale } = useProjectDemo(demoRef)
+  const { x } = useProjectDemo(demoRef)
 
   const handleToggleFullscreen = useCallback(() => {
     toggleDemo()
@@ -28,8 +28,7 @@ export const ProjectDemo: FC<ProjectDemoProps> = memo(({ demo, links }) => {
   }, [toggleBg, toggleDemo])
 
   const handleRemoveFullscreen = useCallback(() => {
-    console.log('removing');
-    
+    console.log("removing")
 
     if (!isDemoActive) {
       return
@@ -46,9 +45,7 @@ export const ProjectDemo: FC<ProjectDemoProps> = memo(({ demo, links }) => {
   return (
     <motion.div
       ref={containerRef}
-      className={classNames(styles.container, {
-        [styles["container--active"]]: isDemoActive,
-      })}
+      className={classNames(styles.container, { [styles["container--active"]]: isDemoActive })}
       initial={{ transform: "translateX(0px) scale(1)" }}
       animate={{
         transform: isDemoActive ? `translateX(${-x}px) scale(${1.75})` : "translateX(0px) scale(1)",

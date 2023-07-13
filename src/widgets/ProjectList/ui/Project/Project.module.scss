@@ -75,4 +75,16 @@
   .demo {
     display: none;
   }
+
+  .heading {
+
+
+    flex-direction: column-reverse;
+
+    align-items: flex-start;
+  }
+
+  .title {
+    max-width: 100%;
+  }
 }
