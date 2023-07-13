@@ -1,51 +1,42 @@
+import { calculateScale } from "../utils"
 import { useLayoutEffect, useState } from "react"
 
 export function useProjectDemo(demoRef: React.RefObject<HTMLDivElement>) {
-  const [demoTransformation, setDemoTransformation] = useState<{
-    x: number
-    y: number
-    scale: number
-  }>({
+  const [demoTransformation, setDemoTransformation] = useState({
     x: 0,
     y: 0,
     scale: 0,
   })
 
   useLayoutEffect(() => {
-    const elem = demoRef.current?.getBoundingClientRect()
+    const element = demoRef.current
+    const elementRect = element?.getBoundingClientRect()
 
-    if (!elem) {
+    if (!element || !elementRect) {
       return
     }
 
-    const elemWidth = elem.width
-    const elemHeight = elem.height
-
-    const elemClientX = elem.x
-    const elemClientY = elem.y
-
+    const elementWidth = elementRect.width
+    const elementHeight = elementRect.height
+    const elementClientX = elementRect.x
+    const elementClientY = elementRect.y
     const windowWidth = window.innerWidth || document.documentElement.clientWidth
     const windowHeight = window.innerHeight || document.documentElement.clientHeight
 
-    const distanceToCenterWidth = elemClientX - windowWidth / 2 - elemWidth / 2
-    const distanceToCenterHeight = windowHeight / 2 + elemHeight / 2
+    const distanceToCenterWidth = elementClientX - windowWidth / 2 + elementWidth / 2
+    const distanceToCenterHeight = windowHeight / 2 - elementHeight / 2
 
-    const windowToElemRatio =
-      windowWidth / elemWidth / (windowHeight / elemHeight) +
-      windowHeight / elemHeight / (windowWidth / elemWidth)
+    const scale = calculateScale(elementWidth, elementHeight, windowWidth, windowHeight)
 
-    setDemoTransformation(({ x, y, scale }) => {
+    setDemoTransformation(({ x, y, scale: prevScale }) => {
       const isOnInitialSpot = x === 0 && y === 0
-
-      const scalePadding = 0
-
-      const paddedScale = windowToElemRatio - windowToElemRatio * scalePadding
-
+      const scalePadding = 0.35
+      const paddedScale = scale - scale * scalePadding
       const finalScale = paddedScale > 1 ? paddedScale : 1
 
       return isOnInitialSpot
-        ? { x: distanceToCenterWidth, y: distanceToCenterHeight, scale: finalScale }
-        : { x, y, scale }
+        ? { x: distanceToCenterWidth / finalScale, y: distanceToCenterHeight, scale: finalScale }
+        : { x, y, scale: prevScale }
     })
   }, [demoRef])
 

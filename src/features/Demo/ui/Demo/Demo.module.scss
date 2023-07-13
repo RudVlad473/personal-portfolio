@@ -1,5 +1,6 @@
 @use "../../../../shared/lib/stylesheets/abstracts/" as *;
 @use "../../../../shared/lib/stylesheets/mixins/" as *;
+@use "../../../../shared/lib/stylesheets/components/" as *;
 
 $desktop-width: 100%;
 
@@ -8,12 +9,10 @@ $desktop-width: 100%;
   justify-content: center;
 
   position: relative;
-
-  @include z-index-modal;
 }
 
 .demo {
-  border: 0.25em solid $textColor;
+  border: $demo-border-width solid $textColor;
 
   @include transition-100;
 

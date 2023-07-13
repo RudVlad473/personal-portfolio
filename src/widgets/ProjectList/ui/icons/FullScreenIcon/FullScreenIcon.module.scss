@@ -1,0 +1,8 @@
+@use "../../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../../shared/lib/stylesheets/mixins/" as *;
+
+.full-screen-icon {
+  fill: $textColor;
+
+  @include transition-100;
+}

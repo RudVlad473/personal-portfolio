@@ -1,0 +1,6 @@
+@use "../../../../../shared/lib/stylesheets/abstracts/" as *;
+@use "../../../../../shared/lib/stylesheets/mixins/" as *;
+
+.codeicon {
+  fill: $textColor;
+}

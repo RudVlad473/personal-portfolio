@@ -1,0 +1,12 @@
+@use "../../lib/stylesheets/abstracts/" as *;
+
+$link-width: 50px;
+
+.link-group {
+  display: flex;
+
+  gap: 0.5em;
+}
+
+.link {
+}

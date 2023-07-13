@@ -1,33 +1,36 @@
-import React, { useEffect } from "react"
+import { useWindowEvent } from "."
+import React, { useCallback } from "react"
 
 export function useOuterClick<T extends Element>(
   ref: React.RefObject<T>,
   onOuterClick: () => void
 ) {
-  useEffect(() => {
-    const handleOuterClick = (event: MouseEvent) => {
+  const handleOuterClick = useCallback(
+    (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         onOuterClick()
       }
-    }
+    },
+    [onOuterClick, ref]
+  )
 
-    const handleEscapeKey = (event: KeyboardEvent) => {
+  const handleEscapeKey = useCallback(
+    (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onOuterClick()
       }
-    }
+    },
+    [onOuterClick]
+  )
 
-    const handleClickOrEscape = (event: MouseEvent | KeyboardEvent) => {
+  const handleClickOrEscape = useCallback(
+    (event: MouseEvent | KeyboardEvent) => {
       handleOuterClick(event as MouseEvent)
       handleEscapeKey(event as KeyboardEvent)
-    }
+    },
+    [handleEscapeKey, handleOuterClick]
+  )
 
-    document.addEventListener("mousedown", handleClickOrEscape)
-    document.addEventListener("keydown", handleClickOrEscape)
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOrEscape)
-      document.removeEventListener("keydown", handleClickOrEscape)
-    }
-  }, [ref, onOuterClick])
+  useWindowEvent("mousedown", handleClickOrEscape)
+  useWindowEvent("keydown", handleClickOrEscape)
 }

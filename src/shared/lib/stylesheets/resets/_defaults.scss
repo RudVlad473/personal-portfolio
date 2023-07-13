@@ -18,8 +18,9 @@ body {
 
   position: relative;
 
-  // padding: 1em;
+  @include m.z-index-default;
 }
+
 ::-webkit-scrollbar {
   height: 1em;
   width: 1em;

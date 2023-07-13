@@ -1,9 +1,13 @@
 @use "../../lib/stylesheets/abstracts/" as *;
 
+$button-size: 40px;
+
 .action-button {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  color: $textColor;
 
   background-color: $buttonColor;
 
@@ -13,9 +17,7 @@
 
   border-radius: 50%;
 
-  width: 50px;
-
-  color: $textColor;
+  width: $button-size;
 
   outline: none;
   border: none;

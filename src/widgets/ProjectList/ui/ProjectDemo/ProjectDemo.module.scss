@@ -1,0 +1,27 @@
+@use "../../../../shared/lib/stylesheets/mixins/" as *;
+@use "../../../../shared/lib/stylesheets/components/" as *;
+
+.container {
+  position: relative;
+
+  @include z-index-default;
+
+  &--active {
+    @include z-index-modal;
+  }
+}
+
+.link-group {
+  $group-offset: $demo-border-width;
+
+  position: absolute;
+
+  @include z-index-modal-2;
+
+  top: $group-offset * 2;
+  right: $group-offset * 2;
+}
+
+.demo {
+  position: relative;
+}

@@ -1,10 +1,9 @@
 import { FilterBar } from "../../../../features/FilterBar/ui"
 import { TScale } from "../../../../features/SnakeScale/lib/types"
 import { SnakeScale } from "../../../../features/SnakeScale/ui"
-import { useScrollTo } from "../../../../shared/lib/hooks"
 import { useSortedScales } from "../../lib/hooks"
 import styles from "./SkillScales.module.scss"
-import { FC, useCallback, useEffect, useRef } from "react"
+import { FC, useCallback, useRef } from "react"
 
 export const SkillScales: FC = () => {
   const { sortedSkills, technologiesFilter = [], setFilters } = useSortedScales()

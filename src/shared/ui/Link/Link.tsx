@@ -1,13 +1,14 @@
+import { TLinkAction } from "../../lib/types"
 import styles from "./Link.module.scss"
 import classNames from "classnames"
 import { FC, PropsWithChildren } from "react"
 
-type LinkProps = PropsWithChildren<{
-  url?: string
-  toNewPage?: boolean
-  isPlain?: boolean
-  onClick?: () => void
-}>
+type LinkProps = PropsWithChildren<
+  TLinkAction & {
+    toNewPage?: boolean
+    isPlain?: boolean
+  }
+>
 
 export const Link: FC<LinkProps> = ({
   children,

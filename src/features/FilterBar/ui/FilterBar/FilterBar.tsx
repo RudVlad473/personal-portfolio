@@ -3,6 +3,7 @@ import { ActionButton } from "../../../../shared/ui/ActionButton"
 import { CrossIcon } from "../CrossIcon"
 import { FilterTag } from "../FilterTag"
 import styles from "./FilterBar.module.scss"
+import classNames from "classnames"
 import { FC, useCallback } from "react"
 
 export const FilterBar: FC = () => {
@@ -35,10 +36,20 @@ export const FilterBar: FC = () => {
 
   const { projects } = useProjectsContext()
 
+  const anyTags = tags.length > 0
+
   return (
     <div className={styles["filter-bar"]}>
+      {anyTags && (
+        <h4
+          className={classNames(styles.counter, {
+            [styles["counter--featured"]]: projects.length === 0,
+          })}>
+          Projects left: ( {projects.length} )
+        </h4>
+      )}
+
       <ul className={styles.tags}>
-        {tags.length > 0 && <li className={styles.counter}>( {projects.length} )</li>}
         {tags.map((value) => (
           <li key={value}>
             <FilterTag
@@ -47,14 +58,15 @@ export const FilterBar: FC = () => {
             />
           </li>
         ))}
-        {tags.length > 0 && (
-          <li>
-            <ActionButton onClick={handleOnTechnologiesClear}>
-              <CrossIcon />
-            </ActionButton>
-          </li>
-        )}
       </ul>
+
+      {anyTags && (
+        <div>
+          <ActionButton onClick={handleOnTechnologiesClear}>
+            <CrossIcon />
+          </ActionButton>
+        </div>
+      )}
     </div>
   )
 }

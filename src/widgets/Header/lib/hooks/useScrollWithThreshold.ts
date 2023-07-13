@@ -1,24 +1,46 @@
 import { useWindowEvent } from "../../../../shared/lib/hooks"
 import { getCurrentScrollPercentage } from "../../../../shared/lib/utils"
 import { scrollPercentageThreshold } from "../../consts"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
-export function useScrollWithThreshold(threshold = scrollPercentageThreshold) {
-  const [scrollPercentage, setScrollPercentage] = useState<number>(() =>
-    getCurrentScrollPercentage()
-  )
+const initScrollPercentage = getCurrentScrollPercentage()
+
+export function useScrollWithThreshold(
+  onScrollWithThreshold?: (scrollPercentage: number) => void,
+  threshold = scrollPercentageThreshold
+) {
+  const lastScrollValueRef = useRef<number>(initScrollPercentage)
+
+  const [scrollPercentage, setScrollPercentage] = useState<number>(() => initScrollPercentage)
 
   const handleScroll = useCallback(() => {
     const currentScrollPercentage = getCurrentScrollPercentage()
 
-    setScrollPercentage((prevPercentage) => {
-      const hasPassedThreshold = Math.abs(currentScrollPercentage - prevPercentage) > threshold
+    setScrollPercentage((prevScrollValue) => {
+      const lastScrollPercentage = lastScrollValueRef.current
 
-      return hasPassedThreshold ? currentScrollPercentage : prevPercentage
+      const hasPassedThreshold =
+        Math.abs(currentScrollPercentage - lastScrollPercentage) > threshold
+
+      let newScrollPercentage = lastScrollPercentage
+
+      if (hasPassedThreshold) {
+        newScrollPercentage = currentScrollPercentage
+
+        lastScrollValueRef.current = prevScrollValue
+      }
+
+      return newScrollPercentage
     })
   }, [threshold])
 
   useWindowEvent("scroll", handleScroll)
+
+  useEffect(() => {
+    if (scrollPercentage !== lastScrollValueRef.current) {
+      onScrollWithThreshold?.(scrollPercentage)
+    }
+  }, [onScrollWithThreshold, scrollPercentage])
 
   return {
     scrollPercentage,

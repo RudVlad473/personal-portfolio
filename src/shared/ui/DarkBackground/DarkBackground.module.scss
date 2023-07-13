@@ -2,7 +2,6 @@
 @use "../../../shared/lib/stylesheets/abstracts/" as *;
 
 .darkbackground {
-  @include z-index-overlay;
   @include transition-300;
 
   position: fixed; /* Sit on top of the page content */
@@ -22,12 +21,11 @@
 
   pointer-events: none;
 
+  @include z-index-default;
+
   &--active {
-    // display: block;
     opacity: 1;
 
     pointer-events: all;
-
-    // background-color: $overlayColor; /* Black background with opacity */
   }
 }

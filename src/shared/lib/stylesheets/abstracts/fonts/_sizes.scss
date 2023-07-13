@@ -4,7 +4,6 @@
   --fs-100: calc(var(--ui-font-step) * 1.25);
   --fs-200: calc(var(--ui-font-step) * 1.5);
   --fs-300: calc(var(--ui-font-step) * 2);
-  --fs-350: calc(var(--ui-font-step) * 3);
   --fs-400: calc(var(--ui-font-step) * 6);
 }
 
@@ -13,6 +12,9 @@
 
 @media (max-width: $bp-small) {
   :root {
-    --fs-400: var(--fs-350);
+    --fs-100: calc(var(--ui-font-step) * 1.25);
+    --fs-200: calc(var(--ui-font-step) * 1.35);
+    --fs-300: calc(var(--ui-font-step) * 1.75);
+    --fs-400: calc(var(--ui-font-step) * 2.5);
   }
 }

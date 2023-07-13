@@ -4,6 +4,8 @@
 .link {
   position: relative;
 
+  pointer-events: all;
+
   &--animated {
     display: block;
 
